@@ -196,7 +196,7 @@ stream_responese(response)
 ** prompt에서 여러 개의 변수를 입력으로 받을 때 prompt.partial을 사용하기 
 ex) prompt-maker.yaml 파일에서  보여지는 것처럼 {task} , {question} 2개의 변수가 입력변수로 받아야 하는 prompt 구조
 ![image](https://github.com/user-attachments/assets/69cdd026-963e-47f2-b881-f90e0a7559e8)
-→ prompt.partial 을 이용해서 변수를 추가 처리 할 수 있음 
 ![image](https://github.com/user-attachments/assets/57b457f8-e534-4afb-aa64-dd0afbb7ab6f)
+  → prompt.partial 을 이용해서 변수를 추가 처리 할 수 있음 
 
 
