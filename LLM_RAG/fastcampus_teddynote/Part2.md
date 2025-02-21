@@ -21,7 +21,7 @@
 ![image](https://github.com/user-attachments/assets/abd2351d-95cb-4e31-b17f-7772e0f873eb)
 ![image](https://github.com/user-attachments/assets/1c874359-f228-4368-843d-8b346b7221ec)
   → 저 클래스 내부를 보면 search_key 인자를 따로 만들어서, 저 값이 instruction이면 instruction끼리 유사도를 측정하고 input이면 input 끼리 유사도 측정해서 나오도록 함! 
-  → 기존 Example Selector들(SemanticSimilarityExampleSelector, MMR )은 모두 유사도 계산시,  instruction과 input이 합산된 유사도로 계산되어서 예시가 잘 나오지 않을 때가 많은 문제가 있음
+  → 기존 Example Selector들(SemanticSimilarityExampleSelector, MMR )은 모두 유사도 계산시, instruction과 input이 합산된 유사도로 계산되어서 예시가 잘 나오지 않을 때가 많은 문제가 있음
 
 09. LangSmith - Hub
 (https://smith.langchain.com/hub?organizationId=02a489e1-23b2-5f26-a131-f2851cc73a9c)
@@ -32,10 +32,23 @@
 ![image](https://github.com/user-attachments/assets/b116aa89-a6b2-49ba-883d-9afbaa226c21)
   →  직접 복사해서 사용해도 좋고 
   → 저렇게 langchain 코드로 갖고올 수도 있음
-![image](https://github.com/user-attachments/assets/76a74f6d-55d9-4e63-89dd-ce4262e549ed)
-  → 특정 버전을 : 이후로 해시코드 작성해서 다른 버전으로 갖고올 수도 있음
-  → 또한, 자이 작성한 prompt를 hub에 업로드도 가능! (아래코드 참고)
-
+  
+```python
+prompt = hub.pull("rlm/rag-prompt:50442af1")
+prompt
+```
+  → 특정 버전을 : 이후로 해시코드 작성해서 다른 버전으로 갖고올 수도 있음 (commit 버튼 눌러보면 버전별 확인 가능)
+  → 또한, 자신신이 작성한 prompt를 hub에 업로드도 가능! (아래코드 참고)
+```python
+from langchain.prompts import ChatPromptTemplate
+prompt = ChatPromptTemplate.from_template(
+    "주어진 내용을 바탕으로 다음 문장을 요약하세요. 답변은 반드시 한글로 작성하세요\n\nCONTEXT: {context}\n\nSUMMARY:"
+)
+prompt
+from langchain import hub
+# 프롬프트를 허브에 업로드합니다.
+hub.push("teddynote/simple-summary-korean", prompt)
+```
 ** 만약 내가 작성한 prompt를 private하게 업로드 하고 싶다면 ‘Make Private’ 기능 사용 
 ![image](https://github.com/user-attachments/assets/330c14ad-1474-433e-8555-197db7148b87)
 
