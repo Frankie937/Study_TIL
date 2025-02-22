@@ -437,7 +437,7 @@ input_variables: ["sender", "additional_information", "company", "email", "subje
 
 ### ch6. 모델(Model)
 
-05. 토큰 사용량 확인  get_openai_callback 
+05. 토큰 사용량 확인 -> langachain의 get_openai_callback 함수 사용 
 
 ```python
 # API KEY를 환경변수로 관리하기 위한 설정 파일
