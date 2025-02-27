@@ -168,9 +168,7 @@ agent_executor = AgentExecutor(
     verbose=True,
     handle_parsing_errors=True,
 )
-```
 
-```python
 # Agent 실행
 result = agent_executor.invoke({"input": "How many letters in the word `teddynote`?"})
 # 결과 확인
@@ -191,5 +189,40 @@ result = agent_executor.invoke(
 # 결과 확인
 print(result["output"])
 ```
+- MessagesPlaceholder는 변수처럼 동적으로 채워질 수 있는 공간(플레이스홀더) 
+- variable_name="agent_scratchpad"는 LangChain의 실행 과정에서 추가적인 메시지를 저장하는 역할을 함
+- agent_scratchpad는 AI가 사고하는 과정(예: 중간 연산 결과, 체계적 추론 등)을 저장하는 공간
+  (예를 들어, 위의 코드에서 '네이버뉴스 요약해달라'는 사용자의 요청이었을 때, agent가 자신의 tools 중에 naver_news_crawl 를 사용하여 크롤링한 뉴스 내용을 저장하는 공간일 될 수 있음 - for llm에게 사용자의 input과 함께 전달하기 위해)
+- 일반적으로 LangChain의 에이전트(Agent)에서 사용됨. 이 값은 프롬프트가 실행될 때 동적으로 채워짐
 
+
+
+02. Agent, AgentExecutor
+- **AgentExecutor**가 필요한 이유?
+→  Agent도 나중에 멀티 에이전트 방식으로 가기에 여러 개의 Agent를 핸들링하고 흐름제어하는 컨트롤 관점에서 필요하기에 !!
+    - AgentExecutor는 도구를 사용하는 에이전트를 실행하는 클래스입니다.
+    - **주요 속성**
+        - `agent`: 실행 루프의 각 단계에서 계획을 생성하고 행동을 결정하는 에이전트
+        - `tools`: 에이전트가 사용할 수 있는 유효한 도구 목록
+        - `return_intermediate_steps`: 최종 출력과 함께 에이전트의 중간 단계 경로를 반환할지 여부
+        - `max_iterations`: 실행 루프를 종료하기 전 최대 단계 수
+        - `max_execution_time`: 실행 루프에 소요될 수 있는 최대 시간
+        - `early_stopping_method`: 에이전트가 `AgentFinish`를 반환하지 않을 때 사용할 조기 종료 방법. ("force" or "generate")
+            - `"force"` 는 시간 또는 반복 제한에 도달하여 중지되었다는 문자열을 반환합니다.
+            - `"generate"` 는 에이전트의 LLM 체인을 마지막으로 한 번 호출하여 이전 단계에 따라 최종 답변을 생성합니다.
+        - `handle_parsing_errors`: 에이전트의 출력 파서에서 발생한 오류 처리 방법. (True, False, 또는 오류 처리 함수)
+        - `trim_intermediate_steps`: 중간 단계를 트리밍하는 방법. (-1 trim 하지 않음, 또는 트리밍 함수)
+    - **주요 메서드**
+        1. `invoke`: 에이전트 실행
+        2. `stream`: 최종 출력에 도달하는 데 필요한 단계를 스트리밍
+    - **주요 기능**
+        1. **도구 검증**: 에이전트와 호환되는 도구인지 확인
+        2. **실행 제어**: 최대 반복 횟수 및 실행 시간 제한 설정 가능
+        3. **오류 처리**: 출력 파싱 오류에 대한 다양한 처리 옵션 제공
+        4. **중간 단계 관리**: 중간 단계 트리밍 및 반환 옵션
+        5. **비동기 지원**: 비동기 실행 및 스트리밍 지원
+    - **최적화 팁**
+        - `max_iterations`와 `max_execution_time`을 적절히 설정하여 실행 시간 관리
+        - `trim_intermediate_steps`를 활용하여 메모리 사용량 최적화
+        - 복잡한 작업의 경우 `stream` 메서드를 사용하여 단계별 결과 모니터링
 
