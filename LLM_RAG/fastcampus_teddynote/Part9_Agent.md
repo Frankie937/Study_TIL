@@ -169,3 +169,27 @@ agent_executor = AgentExecutor(
     handle_parsing_errors=True,
 )
 ```
+
+```python
+# Agent 실행
+result = agent_executor.invoke({"input": "How many letters in the word `teddynote`?"})
+# 결과 확인
+print(result["output"])
+
+# Agent 실행
+result = agent_executor.invoke({"input": "114.5 + 121.2 의 계산 결과는?"})
+# 결과 확인
+print(result["output"])
+
+
+# Agent 실행
+result = agent_executor.invoke(
+    {
+        "input": "뉴스 기사를 요약해 줘: https://n.news.naver.com/mnews/hotissue/article/092/0002347672?type=series&cid=2000065"
+    }
+)
+# 결과 확인
+print(result["output"])
+```
+
+
