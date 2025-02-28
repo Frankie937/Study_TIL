@@ -226,3 +226,149 @@ print(result["output"])
         - `trim_intermediate_steps`를 활용하여 메모리 사용량 최적화
         - 복잡한 작업의 경우 `stream` 메서드를 사용하여 단계별 결과 모니터링
 
+
+03. Agent의 중간 단계 스트리밍(stream) 
+- Actioin : AgentAction이라는 객체가 호출되면서 어떤 도구를 써야 할 지 사용할 도구를 결정하여, 실행함
+- Observation : 실행한 결과가 observaton에 담기게 됨
+- Final Answer : 그 결과가 담긴 Observation을 보고 답변을 생성하게 됨
+
+→ 오류가 나거나 에러 시, Action 과 Observation 단계를 반복하게 됨
+
+
+04. Agent에 메모리 추가(멀티턴 구현) 
+이전의 대화내용을 기억하기 위해서는 `RunnableWithMessageHistory` 를 사용하여 `AgentExecutor` 를 감싸줍니다.
+( https://wikidocs.net/254682 : **RunnableWithMessageHistory에 ChatMessageHistory추가 )**
+
+```python
+from langchain.tools import tool
+from typing import List, Dict, Annotated
+from langchain_teddynote.tools import GoogleNews
+from langchain_experimental.utilities import PythonREPL
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_openai import ChatOpenAI
+from langchain.agents import create_tool_calling_agent
+from langchain.agents import AgentExecutor
+from langchain_community.chat_message_histories import ChatMessageHistory
+from langchain_core.runnables.history import RunnableWithMessageHistory
+
+
+# 도구 생성
+@tool
+def search_news(query: str) -> List[Dict[str, str]]:
+    """Search Google News by input keyword"""
+    news_tool = GoogleNews()
+    return news_tool.search_by_keyword(query, k=5)
+
+# 도구 생성
+@tool
+def python_repl_tool(
+    code: Annotated[str, "The python code to execute to generate your chart."],
+):
+    """Use this to execute python code. If you want to see the output of a value,
+    you should print it out with `print(...)`. This is visible to the user."""
+    result = ""
+    try:
+        result = PythonREPL().run(code)
+    except BaseException as e:
+        print(f"Failed to execute. Error: {repr(e)}")
+    finally:
+        return result
+
+# tools 정의
+tools = [search_news, python_repl_tool]
+
+# 프롬프트 생성
+# 프롬프트는 에이전트에게 모델이 수행할 작업을 설명하는 텍스트를 제공합니다. (도구의 이름과 역할을 입력)
+prompt = ChatPromptTemplate.from_messages(
+    [
+        (
+            "system",
+            "You are a helpful assistant. "
+            "Make sure to use the `search_news` tool for searching keyword related news.",
+        ),
+        ("placeholder", "{chat_history}"),
+        ("human", "{input}"),
+        ("placeholder", "{agent_scratchpad}"),
+    ]
+)
+
+# LLM 정의
+llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+
+# Agent 생성
+agent = create_tool_calling_agent(llm, tools, prompt)
+
+# AgentExecutor 생성
+agent_executor = AgentExecutor(
+    agent=agent,
+    tools=tools,
+    verbose=False,
+    handle_parsing_errors=True,
+)
+
+# AgentCallbacks와 AgentStreamParser를 langchain_teddynote.messages에서 가져옵니다.
+from langchain_teddynote.messages import AgentCallbacks, AgentStreamParser
+
+# 도구 호출 시 실행되는 콜백 함수입니다.
+def tool_callback(tool) -> None:
+    print("<<<<<<< 도구 호출 >>>>>>")
+    print(f"Tool: {tool.get('tool')}")  # 사용된 도구의 이름을 출력합니다.
+    print("<<<<<<< 도구 호출 >>>>>>")
+
+# 관찰 결과를 출력하는 콜백 함수입니다.
+def observation_callback(observation) -> None:
+    print("<<<<<<< 관찰 내용 >>>>>>")
+    print(
+        f"Observation: {observation.get('observation')[0]}"
+    )  # 관찰 내용을 출력합니다.
+    print("<<<<<<< 관찰 내용 >>>>>>")
+     
+# 최종 결과를 출력하는 콜백 함수입니다.
+def result_callback(result: str) -> None:
+    print("<<<<<<< 최종 답변 >>>>>>")
+    print(result)  # 최종 답변을 출력합니다.
+    print("<<<<<<< 최종 답변 >>>>>>")
+
+# AgentCallbacks 객체를 생성하여 각 단계별 콜백 함수를 설정합니다.
+agent_callbacks = AgentCallbacks(
+    tool_callback=tool_callback,
+    observation_callback=observation_callback,
+    result_callback=result_callback,
+)
+
+# AgentStreamParser 객체를 생성하여 에이전트의 실행 과정을 파싱합니다.
+agent_stream_parser = AgentStreamParser(agent_callbacks)
+
+# session_id 를 저장할 딕셔너리 생성
+store = {}
+# session_id 를 기반으로 세션 기록을 가져오는 함수
+def get_session_history(session_ids):
+    if session_ids not in store:  # session_id 가 store에 없는 경우
+        # 새로운 ChatMessageHistory 객체를 생성하여 store에 저장
+        store[session_ids] = ChatMessageHistory()
+    return store[session_ids]  # 해당 세션 ID에 대한 세션 기록 반환
+
+# 채팅 메시지 기록이 추가된 에이전트를 생성합니다.
+agent_with_chat_history = RunnableWithMessageHistory(
+    agent_executor,
+    # 대화 session_id
+    get_session_history,
+    # 프롬프트의 질문이 입력되는 key: "input"
+    input_messages_key="input",
+    # 프롬프트의 메시지가 입력되는 key: "chat_history"
+    history_messages_key="chat_history",
+)
+
+# 질의에 대한 답변을 스트리밍으로 출력 요청
+response = agent_with_chat_history.stream(
+    {"input": "안녕? 내 이름은 테디야!"},
+    # session_id 설정
+    config={"configurable": {"session_id": "abc123"}}, # session_id를 다른 것으로 하면 대화내용 기억 X
+)
+
+# 출력 확인
+for step in response:
+    agent_stream_parser.process_agent_steps(step)
+```
+
+(ch3 예정)
