@@ -67,3 +67,57 @@ llm같은 경우 gpt 모델을 쓰게 되면 opne ai사의 서버에 요청해�
 
 - `chunk_msg`: 실시간 출력 메시지
 - `metadata`: 노드 정보
+
+### Ch3. LangGraph 구조 설계
+
+01. LangGraph로 자유롭게 그래프 로직 구성(흐름 엔지니어링) 
+
+- LangGraph의 그래프 정의
+    - State 정의
+    - 노드 정의
+    - 그래프 정의
+    - 그래프 컴파일
+    - 그래프 시각화
+```python
+# state 정의
+class GraphState(TypeDict):
+	context : Annotated[List[Document], operator.add]
+	answer : Annotated[List[Documnet], operator.add]
+	question : Annotated[str, "user question"]
+	sql_query : Annotated[str, "sql query"]
+	binary_score : Annotated[str, "binary score yes or no"]
+
+# 노드 정의 
+
+def retrieve(state : GraphState) -> GraphState : 
+	documents = "검색된 문서" 
+	return GraphState(contexts = documents)
+
+
+
+# 그래프 정의 
+workflow = StateGrpah(GraphState)
+
+workflow.add_node("retireve", retrieve)
+...
+workflow.add_edge("retrieve", "GPT 요청")
+...
+workflow.set_entry_point("retrieve") # 시작점 설정
+
+momory = MemeorySaver() # 기록을 위한 메모리 저장소 설정 
+
+# 그래프 컴파일 
+app = workflow.compile(checkpointer = memeory)  
+
+
+# 그래프 시작화 
+from langchain_teddynote.graphs import visualize_graph
+
+visaulize_graph(app)
+```
+→ Graph의 장점은 여러 흐름을 손쉽게 추가하고 빼고, 수정하는 등 흐름을 제어하고 테스트하기에 너무나도 편리함
+
+→ 이번 강의의 코드파일에는 내부가 복잡하면 큰 그림을 못 볼 수 있기 때문에 sudo코드 처럼 큰 뼈대를 볼 수 있도록 안의 함수의 내용들은 네이밍 말고는 비어져있음 
+
+→ sudo 코드를 통해서 그래프를 다양하게 설계해보는 연습을 해보는 게 좋음 (큰 뼈대로 다양하게 흐름을 잡아보는 연습을 하기에 좋음)
+
