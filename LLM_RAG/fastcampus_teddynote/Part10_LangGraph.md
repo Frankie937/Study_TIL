@@ -134,3 +134,6 @@ visaulize_graph(app)
 05. 쿼리 재작성 모듈 추가 
 
 06. [프로젝트] Agentic RAG- 에이전트를 활용한 RAG
+
+07. [프로젝트] Adaptive RAG
+→ **RAG**의 전략으로, (1) [쿼리 분석](https://blog.langchain.dev/query-construction/)과 (2) [Self-Reflective RAG](https://blog.langchain.dev/agentic-rag-with-langgraph/)을 결합
