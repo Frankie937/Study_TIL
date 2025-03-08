@@ -137,3 +137,9 @@ visaulize_graph(app)
 
 07. [프로젝트] Adaptive RAG
 → **RAG**의 전략으로, (1) [쿼리 분석](https://blog.langchain.dev/query-construction/)과 (2) [Self-Reflective RAG](https://blog.langchain.dev/agentic-rag-with-langgraph/)을 결합
+
+![image](https://github.com/user-attachments/assets/848738ed-3c15-408b-a12a-a400fa749908)
+
+- Grade Documents 노드 : 검색된 문서 중에 노이즈를 줄이는 단계라고 볼 수 있음 (현업에서 유용! 비용도 아끼고)
+- 전체 과정에서 llm이 중간중간 많이 쓰임 (Grade Documents, Hallucination checker, relevance checker , Transform Query, Web Search 노드에서 모두 쓰임) 그렇기에 답변 품질은 좋아질 수 있으나 답변 도출의 지연 시간과 비용이 많이 들 수 있는 것도 고려할 점…!!!!
+    -> 답변 도출 지연 시간을 UX로 풀어내는 경우가 많음 - perplexity처럼 사용자로 하여금 답변을 오래 기다릴 수 있게끔 답변의 품질을 높이기 위한 중간 과정들을 UX로 보여주는 것들을 통해서 풀어낼 수 도 있음
