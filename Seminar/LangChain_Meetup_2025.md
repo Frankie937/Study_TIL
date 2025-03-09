@@ -6,6 +6,12 @@
 
 ### LangGraph를 활용한 에이전틱AI 시스템 구축 | 멀티에이전트 협업 네트워크 시스템 중심으로 ( 이경록 | 브레인크루 )
 
+강의 링크 : https://www.youtube.com/watch?v=edsshVochqM
+
+- 멀티에이전트 패턴 여러가지가 있다.
+  ![image](https://github.com/user-attachments/assets/3f073454-9bea-4f25-a996-2f71f87dc59d)
+  - 그 중에 제일 유명한 패턴 "Supervisor Pattern"
+      ![image](https://github.com/user-attachments/assets/64364999-dc65-4328-8d10-bdec0f373d20)
 
 
 
