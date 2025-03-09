@@ -3,7 +3,7 @@
 ![image](https://github.com/user-attachments/assets/8e636776-a708-4aaf-ac8e-1dc547f90ca1)
 
 
-## 에이전틱 AI - 랭체인코리아 밋업 2025Q1
+## 에이전틱 AI - 랭체인코리아 밋업 2025Q1 - 2025/03/04
 
 ### LangGraph를 활용한 에이전틱AI 시스템 구축 | 멀티에이전트 협업 네트워크 시스템 중심으로 ( 이경록 | 브레인크루 )
 
