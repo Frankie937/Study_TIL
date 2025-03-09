@@ -9,6 +9,7 @@
 
 (강의 링크 : https://www.youtube.com/watch?v=edsshVochqM)
 (자료 링크: https://drive.google.com/file/d/1MDAbmH2cDG-X4MBVvLFRbbfCjDUP1yNE/view)
+(랭그래프 핸즈온 코드 링크 : [LangGraph-HandsOn](https://github.com/teddylee777/LangGraph-HandsOn)) 
 
 - 왜 modular rag로 가려고 하는가?
     - 기존 RAG는 단방향의 구조는
