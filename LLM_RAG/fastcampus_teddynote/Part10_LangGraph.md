@@ -143,3 +143,24 @@ visaulize_graph(app)
 - Grade Documents 노드 : 검색된 문서 중에 노이즈를 줄이는 단계라고 볼 수 있음 (현업에서 유용! 비용도 아끼고)
 - 전체 과정에서 llm이 중간중간 많이 쓰임 (Grade Documents, Hallucination checker, relevance checker , Transform Query, Web Search 노드에서 모두 쓰임) 그렇기에 답변 품질은 좋아질 수 있으나 답변 도출의 지연 시간과 비용이 많이 들 수 있는 것도 고려할 점…!!!!
     - 답변 도출 지연 시간을 UX로 풀어내는 경우가 많음 - perplexity처럼 사용자로 하여금 답변을 오래 기다릴 수 있게끔 답변의 품질을 높이기 위한 중간 과정들을 UX로 보여주는 것들을 통해서 풀어낼 수 도 있음
+
+### Ch4. LangGraph 유스케이스 연구
+
+1. [프로젝트] 에이전트간 대화 시뮬레이션(고객 응대 시나리오)
+2. [프로젝트] 사용자 요구사항 기반 메타 프롬프트 생성 에이전트
+3. [프로젝트] Corrective RAG (CRAG)
+4. [프로젝트] Self-RAG
+    
+    self-rag 검색된 문서와 생성된 응답 모두에 대해 점검하고 검증하는 추가 단계를 포함하는 RAG 전략 - 자기반성을 하고 반영을 하는 (self-reflection) 방법론 
+     ex) Grade-Documents, Hallucination Check , Relevance Check 등
+    
+5. [프로젝트] Plan and Execute - 전문적인 보고서 작성
+6. [프로젝트] 멀티에이전트 협업 - 웹 검색 및 차트 생성
+7. [프로젝트] 멀티에이전트 감독자(Supervisor) - 웹 검색 및 차트 생성
+8. [프로젝트] 계층적인 구조를 가지는 멀티에이전트 팀 협업 - 리서치팀과 문서 작성팀
+협업
+9. [프로젝트] SQL 에이전트 - (Text2SQL) SQL 쿼리 검색 기반 RAG
+10. [프로젝트] Research 특화 멀티에이전트 STORM - 다인격 멀티에이전트
+11. [프로젝트] GitHub 소스코드 기반 QA 챗봇 구현 - (1)
+12. [프로젝트] GitHub 소스코드 기반 QA 챗봇 구현 - (2)
+13. [프로젝트] Perplexity 클론 앱 구현
