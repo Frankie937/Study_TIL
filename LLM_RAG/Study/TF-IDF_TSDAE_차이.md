@@ -1,13 +1,24 @@
 
 (아직 정리중) 
-TF-IDF vs TSDAE: 차이점 요약 비교
+
+### TF-IDF 
+TF-IDF는 전통적인 통계 기반의 문서 표현 기법으로, 각 단어가 문서에서 얼마나 중요한지를 수치로 나타냄.
+TF (Term Frequency): 단어가 문서에 얼마나 자주 등장하는지를 나타냄.
+IDF (Inverse Document Frequency): 전체 문서에서 특정 단어가 얼마나 희귀한지를 측정.
+
+* 장점
+  - 문장의 의미를 잘 보존하는 임베딩 생성
+  - 문맥/단어 순서 고려
+  - 유사 문장 간 간격이 좁아져서 검색/추천에 유리
+
+* 단점
+  - 사전 훈련 필요 (자체 도메인에 맞춘 튜닝 필요)
+  - 리소스 많이 사용 (GPU 필요)
+  - 학습 데이터 품질에 민감
+
+* 공식:
+![image](https://github.com/user-attachments/assets/ddb1f63b-bbeb-44cc-b3be-c86dba4a0fbf)
 
 
-항목	TF-IDF	TSDAE
-접근 방식	통계 기반	딥러닝 기반 (의미 기반)
-벡터 타입	희소(sparse) 벡터	밀집(dense) 벡터
-문맥 고려	X	O
-성능	빠르고 단순	정확도 높지만 느림
-계산 자원	낮음 (CPU도 충분)	높음 (GPU 권장)
-학습 필요	없음	사전 훈련 필요
-활용 분야	키워드 매칭, 간단 검색	의미 기반 추천, 유사도 분석
+### TF-IDF vs TSDAE: 차이점 비교
+![image](https://github.com/user-attachments/assets/7a5b409c-60e0-422a-95b3-ffdedaa1784c)
