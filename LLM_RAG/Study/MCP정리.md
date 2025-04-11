@@ -7,7 +7,7 @@
 
 * MCP 배경 
   - 2024년 11월 26일 출시
-  - 2025년 2월 19일 Cursor AI에서 MCP 프로토콜 intergration 이후 인기 급상승
+  - 2025년 2월 19일 Cursor AI에서 MCP 프로토콜 intergration 이후 인기 급상승 
 
 
 * MCP(Model Context Protocol) 란?
