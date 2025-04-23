@@ -26,7 +26,7 @@ workflow.add_node(
   - 최종적으로 {"messages": [위의 결과물]} 형태의 dict을 반환!
     -> 즉, ‘model_get_schema’라는 노드는 state(상태, 정보)를 받아서, 그 안에 들어있는 ‘messages’라는 값을 꺼내 모델에 넣고, 모델의 응답을 받아 다시 ‘messages’라는 키의 리스트 값으로 담아서 반환하는 역할
 * 왜 lambda를 사용하는 건가?
-  - 함수를 직접 정의해도 되지만, 간단할 땐 굳이 따로 def로 만들지 않고 한 줄로 익명 함수(lambda)를 쓰면 코드가 더 짧고 직관적!
+  - 함수를 직접 정의해도 되지만, 간단할 땐 굳이 따로 def로 만들지 않고 한 줄로 익명 함수(lambda)를 쓰면 코드가 더 짧고 직관적
   - 아래 함수처럼 정의해도 되긴 함
   - ```python
     def process_state(state):
