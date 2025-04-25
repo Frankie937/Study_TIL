@@ -1,6 +1,6 @@
 ### NRMS벡터란? 
-- NRMS (Neural News Recommendation Model with Multi-Head Self-Attention) 벡터는 주로 뉴스 추천 시스템에서 활용되는 딥러닝 기반의 표현 벡터다.
-- NRMS 모델은 사용자의 뉴스 소비 패턴을 학습하여 개별 뉴스 기사와 사용자의 관심사를 벡터 형태로 변환하고, 이를 기반으로 추천을 수행할 수 있다.
+- NRMS (Neural News Recommendation Model with Multi-Head Self-Attention) 벡터는 주로 뉴스 추천 시스템에서 활용되는 딥러닝 기반의 표현 벡터이다. 
+- NRMS 모델은 사용자의 뉴스 소비 패턴을 학습하여 개별 뉴스 기사와 사용자의 관심사를 벡터 형태로 변환하고, 이를 기반으로 추천을 수행할 수 있음 
 - NRMS 벡터는 뉴스 문서와 사용자의 관심을 표현하는 벡터로, NRMS 모델에서 다음과 같은 과정으로 생성된다.
     * 뉴스 인코딩 (News Encoder)
       - 개별 뉴스 기사는 Word Embedding (예: Glove, FastText)과 CNN 또는 Multi-Head Self-Attention을 사용하여 벡터로 변환됨.
