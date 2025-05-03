@@ -63,32 +63,10 @@ LangGraph는 langchain의 dependency는 많이 줄어듦
 -> llm을 하나만 쓰는 게 아니라 여러 개 쓰겠다는 것
   
 
+* 테디노트님이 만든 format_docs 함수
+  - 불필요한 토크낭비할 필요 없기에 필요한 컨텐츠 내용, 메타정보 중에서도 source(파일명), page(페이지정보) 정보만 따로 추출하도록
+  - 여러 개의 문자 리스트들을 하나의 문자열로 만들어주는 
 
-add_message - reducer 함수
-
-naive rag
-
-format_docs(docs: Any -> GraphState
-불필요한 토크낭비할 필요 없음
-필요한 메타데이터만
-
-page 정보
-소스정보 (파일명, 페이지정보)
-포맷팅 10개의 문자를 하나로 만들어주는
-
-def llm_answer(state : GraphState) -> GraphStaet:
-latest_questioin = state["question"]
-context= state["context"]
-response = pdf_chain.invoke({
-"question" : latest_question,
-"
-"chat_history" : messages_to_history(stae["messages"]
-
-```
-	}
-)
-
-```
 
 XML 형식 태깅을 걸어줘서 구분자까지 넣어서 포맷팅
 
