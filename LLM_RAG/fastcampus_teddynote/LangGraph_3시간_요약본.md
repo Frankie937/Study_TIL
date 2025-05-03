@@ -140,7 +140,7 @@ agent를 활용한 rag
 
 * create_retriever_tool 함수의 document_prompt 인자
 	- 검색할 문서의 내용 뿐만 아니라 원하는 메타데이터를 효과적으로 반영해주기 위함
-	- 원하는 메타데이터의 key값을 metadata 태그 안에 중괄호 활용하여 넣어주기
+	- 원하는 메타데이터의 key값을 metadata 태그 안에 중괄호 활용하여 넣어주기 (XML 태깅형식)
 ```python
 from langchain_core.tools.retriever import create_retriever_tool
 from langchain_core.prompts import PromptTemplate
@@ -154,4 +154,16 @@ retriever_tool = create_retriever_tool(
         "<document><context>{page_content}</context><metadata><source>{source}</source><page>{page}</page></metadata></document>"
     ),
 )
-``` 
+```
+
+** langgraph의 흐름을 구성할 때, 재귀에 빠지지 않도록 여러 설계 고민과 테스트가 필요함!!  
+** agent를 쓰면 여러 task를 수행할 때, tool을 적절할 사용할 수 있기 때문에 라우팅 chain이 줄어듦!! 
+--- 
+
+### [프로젝트] Adaptive RAG
+
+* adaptive RAG
+	- Adaptive RAG는 쿼리 분석과 능동적/자기 수정 RAG를 결합하여 다양한 데이터 소스에서 정보를 검색하고 생성하는 전략
+  	- Adaptive RAG는 RAG의 전략으로, (1) 쿼리 분석과 (2) Self-Reflective RAG을 결합합니다.
+  	- 논문: [Adaptive-RAG: Learning to Adapt Retrieval-Augmented Large Language Models through Question Complexity] (https://arxiv.org/abs/2403.14403) 
+
