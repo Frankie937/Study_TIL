@@ -64,56 +64,26 @@ LangGraph는 langchain의 dependency는 많이 줄어듦
   
 
 * 테디노트님이 만든 format_docs 함수
-  - 불필요한 토크낭비할 필요 없기에 필요한 컨텐츠 내용, 메타정보 중에서도 source(파일명), page(페이지정보) 정보만 따로 추출하도록
-  - 여러 개의 문자 리스트들을 하나의 문자열로 만들어주는 
+  - 불필요한 토크낭비할 필요 없기에 필요한 컨텐츠 내용, 메타정보 중에서도 source(파일명), page(페이지정보) 정보만 따로 추출하도록 XML 형식 태깅을 걸어줘서 구분자까지 넣어서 포맷팅
+  - 여러 개의 문자 리스트들을 하나의 문자열로 만들어주는
 
 
-XML 형식 태깅을 걸어줘서 구분자까지 넣어서 포맷팅
+* 테디노트님이 만든 invoke_graph/stream_graph 함수
+  - invoke_graph(app, inputs, config) -- 개발단계 확인 (노드의 반환값을 모두 확인하려면 invoke가 좋음)
+  - stream_graph(app, inputs, config) -- 실제 서비스 할 때 확인
 
-retrieve
-generate
-
-response = pdf
-chat_history
-add_message
-
-messages_to_history
-
-pdf_chain
-question
-context
-chat_history
-
-Edges
-workflow = StateGraph(GraphState)
-config
-recursion_limit
-stream_graph
-invoke_graph
-
-반환되는 값을 보면
-llm_answer
-answer
-invoke
-stream
-debuging
-노드의 반환값을 모두 확인하려면 invoke가 좋음
-
-invoke_graph(app, inputs, config) -- 개발단계 확인
-stream_graph(app, inputs, config) -- 실제 서비스 할 때 확인
-
-inovke_graph
 
 ---
 
-< 관련성 체크 >
+< 관련성 체크 모듈 추가 >
 
--검색된 문서에 대한 관련성 체크 추가
-groundedness check
-conditional edge
+- 검색된 문서에 대한 관련성 체크 추가 (groundedness check)
+	-> conditional edge 사용 
 
-Groundnesschecker - target = "question-retrieval"
-def relevance_checker
+* Groundnesschecker의 target 인자값
+  - 질문과 검색한 문서의 관련성 체크를 할 때 target 인자 값으로는, "question-retrieval"
+  - 질문과 답변의 관련성 체크를 할 때 target 인자 값으로는, "question-answer"
+
 
 relevant llm answer
 not relevant retrieve
