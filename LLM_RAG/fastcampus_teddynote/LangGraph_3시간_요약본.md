@@ -1,4 +1,20 @@
+
 (영상 : https://www.youtube.com/watch?v=W_uwR_yx4-c) 
+(유튜브 테디노트 - 영상제목 : #LangGraph 개념 완전 정복 몰아보기(3시간))
+
+✅ 소스코드 링크: 
+https://github.com/teddylee777/langchain-kr/tree/main/17-LangGraph/02-Structures
+✅ 타임라인
+00:00 LangGraph 개요
+21:29 LangGraph 세부 기능(State, Node, Edge, Conditional Edge, Compile)
+46:56 LangGraph 로 자유롭게 그래프 로직 구성(흐름 엔지니어링)
+1:10:30 Naive RAG(전통적인 방식의 RAG) 를 LangGraph 로 구현
+1:31:43 답변의 할루시네이션 관련성 평가 모듈 추가
+1:43:28 웹 검색 노드 추가
+1:51:37 쿼리 재작성 모듈 추가
+2:00:55  [프로젝트] Agentic RAG - 에이전트를 활용한 RAG
+2:24:50  [프로젝트] Adaptive RAG
+
 
 (아직 수정 중... 강의들으면서 메모한 내용들) 
 
@@ -8,6 +24,7 @@
 But, LangGraph는 노드의 흐름을 구성, 순환 가능 
 즉, 다이나믹한 플로우 엔지니어링을 통해서 파이프라인을 좀 더 정교하게 만들 수 있음! 
 LangGraph는 langchain의 dependency는 많이 줄어듦
+모듈러 rag의 장점 - 모듈로 짜서 하나씩 조립하듯이 짜는 게 어렵지 않음
 
 문서 검색 
 검색 쿼리
@@ -85,49 +102,30 @@ LangGraph는 langchain의 dependency는 많이 줄어듦
   - 질문과 답변의 관련성 체크를 할 때 target 인자 값으로는, "question-answer"
 
 
-relevant llm answer
-not relevant retrieve
-recursion_error
-
-relevance_check
-retrieve
-
-query_rewrite
-
 ---
 
 < 웹검색 모듈 추가 >
 
-쿼리 변경없이 동일한 문서가 검색되고 있기 때문에
-relevance check에 따라 웹서치해서 문서를 보강하는 내용으로
-TavilySearch
+- 쿼리 변경없이 동일한 문서가 검색되고 있기 때문에 relevance check에 따라 검색을 다시 하는 게 아니라, 웹서치해서 문서를 보강하는 내용
+- TavilySearch 사용 
 
-노드로 패키징
-def web_search(state: GraphState) -> GraphState:
-retrieve > relevance_check > websearch
-
----
 
 < 쿼리재작성 모듈 추가 >
 
 Query Rewrite 모듈
-모듈러 rag의 장점 - 모듈로 짜서 하나씩 조립하듯이 짜는 게 어렵지 않음
 
-기존에 question은 str로 받아서 overwrite하게 사용했는데,
-원본을 왜 살려두는 걸까?
-ui적인 면에서 유저가 실제 입력한 질문을 보여주는 건 그대로 해주는 게 좋기에
-add_mesage reducer로 구현
+** 기존에 question은 str로 받아서 overwrite하게 사용했는데, 원본을 왜 살려두는 걸까?
+	-> ui적인 면에서 유저가 실제 입력한 질문을 보여주는 건 그대로 해주는 게 좋기에
+	-> add_mesage reducer로 구현
 
 ---
 
 < Agentic 프로젝트 >
 
-6번 파일
+(6번 파일)
 agentic rag
-
 agent를 활용한 rag
 
-agent의 역할부분
--> "thought" 판단을 통해 tool을 사용해야 할 지, 안할 지 결정하는 게 있음
--> 무조건 적인 정해진 플로우에 매번 비효율적으로 행동하는 게 아닌게 큰 차이!!!
-->
+( agent의 역할부분
+	-> "thought" 판단을 통해 tool을 사용해야 할 지, 안할 지 결정하는 게 있음
+	-> 무조건 적인 정해진 플로우에 매번 비효율적으로 행동하는 게 아닌게 큰 차이!!!
