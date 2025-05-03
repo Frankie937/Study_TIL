@@ -77,7 +77,7 @@ LangGraph는 langchain의 dependency는 많이 줄어듦
 * condidtional edge에서 사용하는 함수 - callable  - 호출가능한 함수
 
 * 멀티 llm ?
--> llm을 하나만 쓰는 게 아니라 여러 개 쓰겠다는 것
+	- llm을 하나만 쓰는 게 아니라 여러 개 쓰겠다는 것
   
 
 * 테디노트님이 만든 format_docs 함수
