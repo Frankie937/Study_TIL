@@ -19,6 +19,7 @@ https://github.com/teddylee777/langchain-kr/tree/main/17-LangGraph/02-Structures
 (아직 수정 중... 강의 들으면서 메모한 내용들) 
 
 ---
+
 ### LangGraph 개요
 
 기존 langchain의 rag방식은 한 번에 잘해야 하는 부담
