@@ -37,6 +37,8 @@ LangGraph는 langchain의 dependency는 많이 줄어듦
 
 노드들을 만드는 방법, 엣지들을 만드는 방법, 분기엣지를 만드는 방법 중요 
 
+--- 
+
 ### LangGraph 세부 기능(State, Node, Edge, Conditional Edge, Compile)
 
 * 구성요소 
