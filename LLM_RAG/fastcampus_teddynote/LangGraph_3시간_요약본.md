@@ -55,7 +55,7 @@ LangGraph는 langchain의 dependency는 많이 줄어듦
 * RunnableConfig
   - recursion_limit - 순환로직 제한
   - thread_id -- configurable
-	-> thread_id 별로 대화 내용을 따로 저장
+	-  thread_id 별로 대화 내용을 따로 저장
 
 ** 처음부터 끝까지 모두 state를 입력받고 반환, 마지막 저장된 상태값들이 출력되는 것!!
 
@@ -115,8 +115,8 @@ LangGraph는 langchain의 dependency는 많이 줄어듦
 Query Rewrite 모듈
 
 ** 기존에 question은 str로 받아서 overwrite하게 사용했는데, 원본을 왜 살려두는 걸까?
-	-> ui적인 면에서 유저가 실제 입력한 질문을 보여주는 건 그대로 해주는 게 좋기에
-	-> add_mesage reducer로 구현
+	- ui적인 면에서 유저가 실제 입력한 질문을 보여주는 건 그대로 해주는 게 좋기에
+	- add_mesage reducer로 구현
 
 ---
 
@@ -126,6 +126,6 @@ Query Rewrite 모듈
 agentic rag
 agent를 활용한 rag
 
-( agent의 역할부분
-	-> "thought" 판단을 통해 tool을 사용해야 할 지, 안할 지 결정하는 게 있음
-	-> 무조건 적인 정해진 플로우에 매번 비효율적으로 행동하는 게 아닌게 큰 차이!!!
+* agent의 역할부분
+	- "thought" 판단을 통해 tool을 사용해야 할 지, 안할 지 결정하는 게 있음
+	- 무조건 적인 정해진 플로우에 매번 비효율적으로 행동하는 게 아닌게 큰 차이!!!
