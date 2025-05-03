@@ -239,3 +239,10 @@ def grade_documents(state):
 
 
 ** 위의 구조는 질 좋은 답변이 생성되기 좋은 구조이긴 하나, llm이 여러 노드에서 많이 사용되기 때문에 지연시간이 길어질 수 있다. 그래서 질 좋은 답변을 포기 못한다면 지연시간을 길어지는 부분에 대해 UX적으로 풀어가는 것도 좋다 (perplexity처럼 중간 중간 어떤 단계에 있는 지 보여주는 방식 등...) 
+
+
+** 참고로 7번 파일 마지막 코드 stream_graph에서 [] 안에 노드들은 6번 파일의 노드명(agent, rewrite)이라 잘못된 것 같음! 
+```python
+# 그래프 실행
+stream_graph(app, inputs, config, ["agent", "rewrite", "generate"])
+``` 
