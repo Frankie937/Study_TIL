@@ -137,3 +137,21 @@ agent를 활용한 rag
 * agent의 역할부분
 	- "thought" 판단을 통해 tool을 사용해야 할 지, 안할 지 결정하는 게 있음
 	- 무조건 적인 정해진 플로우에 매번 비효율적으로 행동하는 게 아닌게 큰 차이!!!
+
+* create_retriever_tool 함수의 document_prompt 인자
+	- 검색할 문서의 내용 뿐만 아니라 원하는 메타데이터를 효과적으로 반영해주기 위함
+	- 원하는 메타데이터의 key값을 metadata 태그 안에 중괄호 활용하여 넣어주기
+```python
+from langchain_core.tools.retriever import create_retriever_tool
+from langchain_core.prompts import PromptTemplate
+
+# PDF 문서를 기반으로 검색 도구 생성
+retriever_tool = create_retriever_tool(
+    pdf_retriever,
+    "pdf_retriever",
+    "Search and return information about SPRI AI Brief PDF file. It contains useful information on recent AI trends. The document is published on Dec 2023.",
+    document_prompt=PromptTemplate.from_template(
+        "<document><context>{page_content}</context><metadata><source>{source}</source><page>{page}</page></metadata></document>"
+    ),
+)
+``` 
