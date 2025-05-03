@@ -1,6 +1,7 @@
-https://www.youtube.com/watch?v=W_uwR_yx4-c
+(영상 : https://www.youtube.com/watch?v=W_uwR_yx4-c) 
 
-(아직 수정 하진 않음. 그냥 들으면서 적은 메모) 
+(아직 수정 중... 강의들으면서 메모한 내용들) 
+
 ################# langgraph 3시간 요약 #################
 
 기존 langchain의 rag방식은 한 번에 잘해야 하는 부담
@@ -24,27 +25,22 @@ LangGraph는 langchain의 dependency는 많이 줄어듦
   - graph workflow compile 시, checkpointer 굉장히 중요 - 수정 & 리플레이 가능
 
 * state
-- 노드와 노드간에 정보를 전달할 때 state 객체에 담아 전달
-- typedict : 파이썬의 dict에 '타입힌팅'을 추가한 개념 (쉽게 dictionary로 생각해도 됨)
+  - 노드와 노드간에 정보를 전달할 때 state 객체에 담아 전달
+  - typedict : 파이썬의 dict에 '타입힌팅'을 추가한 개념 (쉽게 dictionary로 생각해도 됨)
 
-add_messages - reducer개념
-messages를 주로 쌓을 때 사용
-append 개념이 아닌라
-반환값에 리스트를 주기만 하면 자동으로 기존 리스트에 추가하는 개념
-(langgraph에서 쉽게 사용하기 위해 만든 개념)
+* add_messages - reducer개념
+  - messages를 주로 쌓을 때 사용
+  - append 개념이 아닌라, 반환값에 리스트를 주기만 하면 자동으로 기존 리스트에 추가하는 개념(langgraph에서 쉽게 사용하기 위해 만든 개념)
 
-- 노드와 엣지
-노드 -
-** 랭그래프 문법은 굉장히 쉬움!, 어려운 건 핵심 로직에 들어가는 좋은 품질의 노드를 만드는 게 중요하고 어려울 수 있음
-좋은 노드를 만드는 것
-python 함수의 좋은 품질의 노드를 구성하는 게 중요해짐!!
-- * RunnableConfig
-recursion_limit - 순환로직 제한
-thread_id -- configurable
--> thread_id 별로 대화 내용을 따로 저장
+** 랭그래프 문법은 굉장히 쉬움!, 어려운 건 핵심 로직에 들어가는 '좋은 품질의 노드'를 만드는 게 중요하고 어려울 수 있음!!
+** 좋은 노드를 만드는 것-> python 함수의 좋은 품질의 노드를 구성하는 게 중요해짐!!
 
-처음부터 끝까지 모두 state
-마지막 저장된 상태값들이 출력되는 것!!
+* RunnableConfig
+  - recursion_limit - 순환로직 제한
+  - thread_id -- configurable
+	-> thread_id 별로 대화 내용을 따로 저장
+
+** 처음부터 끝까지 모두 state를 입력받고 반환, 마지막 저장된 상태값들이 출력되는 것!!
 
 ---
 
