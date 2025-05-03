@@ -1,4 +1,4 @@
-
+![image](https://github.com/user-attachments/assets/d2a48fb1-ac67-43bc-9449-c526ca14d397)
 (영상 : https://www.youtube.com/watch?v=W_uwR_yx4-c) 
 (유튜브 테디노트 - 영상제목 : #LangGraph 개념 완전 정복 몰아보기(3시간))
 
@@ -167,6 +167,8 @@ retriever_tool = create_retriever_tool(
   	- Adaptive RAG는 RAG의 전략으로, (1) 쿼리 분석과 (2) Self-Reflective RAG을 결합합니다.
   	- 논문: [Adaptive-RAG: Learning to Adapt Retrieval-Augmented Large Language Models through Question Complexity] (https://arxiv.org/abs/2403.14403) 
 
+![image](https://github.com/user-attachments/assets/7bd3e3e9-27f6-4e80-8fff-729ab8f74148)
+
 
 ```python
 from typing import Literal
@@ -199,3 +201,38 @@ structured_llm_router = llm.with_structured_output(RouteQuery)
 BaseModel을 상속 받은 데이터 클래스 RouteQuery를 정의해주고, llm에게 with_structured_output 함수 인자에 앞서 정의해준 RouteQuery를 지정해주면, 이 llm의 output은 RouteQuery클래스 안에서 지정한 'datasource'가 된다. 이 datasource에 들어가 있는 값은 vectorstore이거나 web_search가 될 것이다. 
 
 ** langgraph에서는 agent를 사용하는 경우도 많겠으나, with_structured_output함수 같이 fuction calling을 사용한 기능인 정형화된 결과물을 내는 이런 구조로 짜여진 코드도 많이 보게 될 것이다. 
+** agent가 많아질 수록 컨트롤하기가 어려워지기 때문에 이렇게 정형화된 결과물을 내는 구조를 활용하는 것도 중요! 
+
+
+* 문서 관련성 노드 함수 (for 검색해 온 문서 중에 알짜배기만 추출해서  압축하기 위함)
+* Grade document 노드 여기서 conditional edge로 구성하지 않은 이유는 관련성 체크의 목적이  아니라, 사용자 질문과 관련성 있는 문서들로만 압축해주기 위한 용도의 노드이기 때문에!  
+(노이즈를 없애주는 기능이기도 함. 노이즈 문서가 같이 있으면 아무래도 하
+``` python
+  # 문서 관련성 평가 노드
+def grade_documents(state):
+    print("==== [CHECK DOCUMENT RELEVANCE TO QUESTION] ====")
+    # 질문과 문서 검색 결과 가져오기
+    question = state["question"]
+    documents = state["documents"]
+
+    # 각 문서에 대한 관련성 점수 계산
+    filtered_docs = []
+    for d in documents:
+        score = retrieval_grader.invoke(
+            {"question": question, "document": d.page_content}
+        )
+        grade = score.binary_score
+        if grade == "yes":
+            print("---GRADE: DOCUMENT RELEVANT---")
+            # 관련성이 있는 문서 추가
+            filtered_docs.append(d)
+        else:
+            # 관련성이 없는 문서는 건너뛰기
+            print("---GRADE: DOCUMENT NOT RELEVANT---")
+            continue
+    return {"documents": filtered_docs}
+```
+
+
+* 할루시네이션(Hallucination) 노드와 Relevant 노드의 차이?
+  	- 할루시네이션 노드는 검색된 문서를 갖고 llm이 관련성 있게 잘 답변을 생성했는 지 여부를 체크하는 노드이고, Relevant 노드는 최종으로 생성한 답변이 사용자의 질문과 관련성이 있는 지 체크하는 노드이다. (할루시네이션은 아닌데, 질문과는 상관없는 엉뚱한 답변이 있을 수 있기 때문에 그걸 체크하는 것도 마지막 relevant 노드에서 필요한 것 ! ) 
