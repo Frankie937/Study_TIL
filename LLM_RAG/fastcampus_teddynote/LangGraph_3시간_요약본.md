@@ -16,9 +16,10 @@ https://github.com/teddylee777/langchain-kr/tree/main/17-LangGraph/02-Structures
   - 2:24:50  [프로젝트] Adaptive RAG
 
 
-(아직 수정 중... 강의들으면서 메모한 내용들) 
+(아직 수정 중... 강의 들으면서 메모한 내용들) 
 
 ---
+### LangGraph 개요
 
 기존 langchain의 rag방식은 한 번에 잘해야 하는 부담
 But, LangGraph는 노드의 흐름을 구성, 순환 가능 
@@ -34,6 +35,8 @@ LangGraph는 langchain의 dependency는 많이 줄어듦
 등등 ... 흐름을 잘 짜줘야 함
 
 노드들을 만드는 방법, 엣지들을 만드는 방법, 분기엣지를 만드는 방법 중요 
+
+### LangGraph 세부 기능(State, Node, Edge, Conditional Edge, Compile)
 
 * 구성요소 
   - state 상태관리 : 메세지 전달자 역할
@@ -61,7 +64,7 @@ LangGraph는 langchain의 dependency는 많이 줄어듦
 
 ---
 
-< 랭그래프 structure 구조 실행 코드 강의 >
+### Naive RAG(전통적인 방식의 RAG) 를 LangGraph 로 구현
 
 (1번 파일 : 기본 그래프 생성하는 과정)
 
@@ -92,7 +95,7 @@ LangGraph는 langchain의 dependency는 많이 줄어듦
 
 ---
 
-< 관련성 체크 모듈 추가 >
+### 답변의 할루시네이션 관련성 평가 모듈 추가
 
 - 검색된 문서에 대한 관련성 체크 추가 (groundedness check)
 	-> conditional edge 사용 
@@ -104,13 +107,15 @@ LangGraph는 langchain의 dependency는 많이 줄어듦
 
 ---
 
-< 웹검색 모듈 추가 >
+### 웹 검색 노드 추가
 
 - 쿼리 변경없이 동일한 문서가 검색되고 있기 때문에 relevance check에 따라 검색을 다시 하는 게 아니라, 웹서치해서 문서를 보강하는 내용
 - TavilySearch 사용 
 
 
-< 쿼리재작성 모듈 추가 >
+--- 
+
+### 쿼리 재작성 모듈 추가
 
 Query Rewrite 모듈
 
@@ -120,7 +125,7 @@ Query Rewrite 모듈
 
 ---
 
-< Agentic 프로젝트 >
+### [프로젝트] Agentic RAG - 에이전트를 활용한 RAG
 
 (6번 파일)
 agentic rag
