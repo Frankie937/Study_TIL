@@ -167,3 +167,35 @@ retriever_tool = create_retriever_tool(
   	- Adaptive RAG는 RAG의 전략으로, (1) 쿼리 분석과 (2) Self-Reflective RAG을 결합합니다.
   	- 논문: [Adaptive-RAG: Learning to Adapt Retrieval-Augmented Large Language Models through Question Complexity] (https://arxiv.org/abs/2403.14403) 
 
+
+```python
+from typing import Literal
+
+from langchain_core.prompts import ChatPromptTemplate
+from pydantic import BaseModel, Field
+from langchain_openai import ChatOpenAI
+from langchain_teddynote.models import get_model_name, LLMs
+
+# 최신 LLM 모델 이름 가져오기
+MODEL_NAME = get_model_name(LLMs.GPT4)
+
+
+# 사용자 쿼리를 가장 관련성 높은 데이터 소스로 라우팅하는 데이터 모델
+class RouteQuery(BaseModel):
+    """Route a user query to the most relevant datasource."""
+
+    # 데이터 소스 선택을 위한 리터럴 타입 필드
+    datasource: Literal["vectorstore", "web_search"] = Field(
+        ...,
+        description="Given a user question choose to route it to web search or a vectorstore.",
+    )
+
+
+# LLM 초기화 및 함수 호출을 통한 구조화된 출력 생성
+llm = ChatOpenAI(model=MODEL_NAME, temperature=0)
+structured_llm_router = llm.with_structured_output(RouteQuery)
+```
+- 설명: RouteQuery라는 클래스는 datasource 부분에 Literal로 vectorstore와 web_search 둘 중 하나가 들어갈 수 있도록 타입 정의를 해준 것이고, description 부분을 보면 llm으로 하여금 web_serach로 라우팅을 보낼 것인지 아니면 vectorstore로 라우팅을 보낼 것인지 결정 지어주는 class라고 보면 됨.
+BaseModel을 상속 받은 데이터 클래스 RouteQuery를 정의해주고, llm에게 with_structured_output 함수 인자에 앞서 정의해준 RouteQuery를 지정해주면, 이 llm의 output은 RouteQuery클래스 안에서 지정한 'datasource'가 된다. 이 datasource에 들어가 있는 값은 vectorstore이거나 web_search가 될 것이다. 
+
+** langgraph에서는 agent를 사용하는 경우도 많겠으나, with_structured_output함수 같이 fuction calling을 사용한 기능인 정형화된 결과물을 내는 이런 구조로 짜여진 코드도 많이 보게 될 것이다. 
