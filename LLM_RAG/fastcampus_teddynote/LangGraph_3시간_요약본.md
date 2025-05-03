@@ -2,7 +2,7 @@
 
 (아직 수정 중... 강의들으면서 메모한 내용들) 
 
-################# langgraph 3시간 요약 #################
+---
 
 기존 langchain의 rag방식은 한 번에 잘해야 하는 부담
 But, LangGraph는 노드의 흐름을 구성, 순환 가능 
@@ -25,7 +25,7 @@ LangGraph는 langchain의 dependency는 많이 줄어듦
   - graph workflow compile 시, checkpointer 굉장히 중요 - 수정 & 리플레이 가능
 
 * state
-  - 노드와 노드간에 정보를 전달할 때 state 객체에 담아 전달
+  - 노드와 노드간에 정보를 전달할 때 state 객체에 담아 전달(graph 노드와 노드 간 공유하는 상태를 정의)
   - typedict : 파이썬의 dict에 '타입힌팅'을 추가한 개념 (쉽게 dictionary로 생각해도 됨)
 
 * add_messages - reducer개념
@@ -46,61 +46,23 @@ LangGraph는 langchain의 dependency는 많이 줄어듦
 
 < 랭그래프 structure 구조 실행 코드 강의 >
 
-1번 기본 그래프 생성하는 과정
+(1번 파일 : 기본 그래프 생성하는 과정)
 
-state정의
-class GraphState(TypedDict):
-context: Annotated[List[Document], operator.add]
-노드정의
+* 기본 랭그래프 structure 구성 요소 
+  - state정의
+  - 노드정의
+  - 그래프정의
+  - 컴파일
+  - 시각화
 
-def retrieve_documnet(state: GraphState) -> GraphState:
-retreived_docs
-그래프정의
-컴파일
-시각화
+* set_entry_point : 시작점을 지정해주는 
+* visualize_graph(app) : 랭그래프 구조 시각화 
+* condidtional edge에서 사용하는 함수 - callable  - 호출가능한 함수
 
-2~5번
-
-6번 agent
-
-7번 adaptive rag
-
-from to
-
-set_entry_point
-visualize_graph(app)
-context
-question
-answer
-relevance_check
-langgraph.graph StateGraph
-langgraph
-conventional RAG
-workflow.add_conditional
-langgraph 장점
-gpt relevance_check
-retrieve
-add_coditional_edges
-
-callable - 호출가능한 함수
-
-멀티 llm ?
+* 멀티 llm ?
 -> llm을 하나만 쓰는 게 아니라 여러 개 쓰겠다는 것
+  
 
-함수의 구현체는 없음
-
-## 이후 문제는 더 쉽게 풀 수 있습니다.
-
-naive rag를 랭그래프로 구현
-
-2~5번 파일 코드 -- 쭉 이어지는 내용이 이어짐
-
-기본 pdf 기반 retrieval chain 생성
-
-state 정의
-graph 노드와 노드 간 공유하는 상태를 정의
-
-하나의 문자열 형태로 가공해서 넣어주겠다는 것
 
 add_message - reducer 함수
 
