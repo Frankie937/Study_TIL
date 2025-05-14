@@ -242,3 +242,10 @@ amazon bedrock 사용하여 상담챗봇 생성 - 내부시스템과 연계관�
 
 ![image](https://github.com/user-attachments/assets/3ec1bf3e-731f-4449-a692-aac7c95f6c7b)
 세션 히스토리 역할 강화 
+
+
+(성진수- 플랫폼 기획 총괄) 
+* 성과 및 서비스 측면에서 이야기하고자 함
+
+---
+### AI 기반 대용량 문서 분석 업무 효율화 : LLM 기반 삼성 입찰 안내서 분석 서비스
