@@ -79,3 +79,166 @@ high tech 기술 건설/엔지니어링 등 첨단회사
 마케팅 전략을 수립 > 운영계획 
 시장조사와 사용자조사사례 
 젠지 세대 
+
+---
+
+### Amazon Bedrock 기반Text-to-SQL로 완성하는 데이터 혁신: 당근페이의 핀테크 성공전략
+
+2023년 amazon bedrock 출시 - 기업형 생성형 ai 활용 가능하도록 
+amazon nova - llm 활용할 수 있도록 - 빠르게 생성형 ai 도입
+ai 산업 예산:  450억 달러 > 2000억 달러 
+
+(당근페이)  
+Text-to-SQL 도입 
+반복되는 요청 잦음 
+자연어로 질문 > sql 변환 
+text-to-sql 변화 
+
+![image](https://github.com/user-attachments/assets/1bd75eda-9e8d-464a-aca1-2dab57b8b7d9)
+
+![image](https://github.com/user-attachments/assets/f719a7c0-c7ef-4398-b3c4-04b2bad9ca13)
+
+파인튜닝 : 사전훈련된 모델을 커스텀하게 조정하여 커스텀 모델로 진화 
+
+amazon bedrock을 통해 쉽게 가져오고 쉽게 인퍼런스 가능 
+
+text-to-sql 도입 긍정적 변화  
+prompt 엔지니어링 
+리더보드 상위모델이라 한들, 100퍼센트 정확도는 어려움 
+(데이터의 변경사항이 제대로 잘 적용되지 않으면 성능이나 정확도 당연히 떨어짐) 
+
+생성형 ai를 접목해서 text-to-sql을 구축한 과정 
+
+(김탄님) 
+당근페이 - Broquery 
+-> ai기반 분석봇(브로처럼 친근하게 다가가 데이터관련 질문(쿼리)을 해결해주는 챗봇)
+사용자는 슬랙에서 브로커리를 멘션하여 자연어로 질문합니다. 
+브로쿼리는 1분 내 요약된 답변과 sql을 줌 
+필요한 경우 시각화도 구현해줌 
+
+비개발 직군의 데이터 접근이 굉장히 어려웠음 
+귀중한 개발 리소스의 소모도 반복적으로 이루어짐 
+이러한 문제들의 핵심 해결방안으로 text-to-sql로 대안을 얻음 
+조직 전체의 데이터 활용 역량도 높일 수 있다고 생각 
+핵심 요구사항 정의하게 됨 
+* 5가지 요구사항
+  1.접근성
+  2.사용자 의도 파악(질문의도 판단- 단순 키워드 인식만이 아니라, 질문의 맥락과 의미르 이해)
+  3. 대화 문맥 인식
+  4. 스스로 sql을 점검하는 메커니즘
+  5. 정확성(사용편의성도 중요하나 답변의 신뢰도는 타협할 수 없는 부분)
+
+amazon bedock과 조화하여 
+
+인터페이스 슬랙 다이나모db rag 시스템 메타데이터 플랫폼 
+![image](https://github.com/user-attachments/assets/9edb247c-262f-4dad-a42d-1322450b8985)
+주요 아키텍처 
+![image](https://github.com/user-attachments/assets/1b328f14-4978-4d35-ac53-01c50636748e)
+* 슬랙 - 접근성 높임
+* 에이전트 - 모든 과정을 진두지휘하는 핵심 (사용자의 의도 파악 > sql 생성) 
+* 다양한 context 필요
+* mcp 서버 : 비즈니스 컨텍스트, 허브의 역할
+* 지능형 에이전트로 나아가도록 역할
+* 랭체인 & 랭그래프로 구현 - 오케스트레이션 효과적으로 구현
+* 복잡한 상호작용을
+
+  ![image](https://github.com/user-attachments/assets/94f2f7a8-06aa-49d5-ae3f-2b288f9c4599)
+  * 자연어로 질의 > 필요하면 다이나모db에서 지난 대화를 갖고옴 > 질문 의도 파악 > 의도에 따라 워크플로우 다름 >  
+  * 정확한 sql 생성을 위해서 정제하는 과정을 거치는데, 이때 2가지 핵심 기술: 필요한 메타데이터 후보군을 놓치지 않기 위해 오픈서치를 활용한 하이브리드 검색을 (하이브리드 방식은 기존 text 검색기술과 의미기반의 임베딩 벡터db 기술 결합) 
+
+* 리랭커 사용 - 사용자의 원본질문과 각 후보간의 유사도를 다시 판단
+  (핵심 필터 역할 - rag시스템의 성능을 한 단계 더 끌어올릴 수 있음)
+
+  * 하이브리드로 넓게 찾고 리랭커로 정교하게 필터 비즈니스적으로
+  * 랭그래프는 그래프구조로 효과적으로 관리
+
+  * 다양한 메타데이터 수집 프로세스
+      - 분석데이터
+      - 설명정보 (메타데이터) - 서비스의 성능과 질을 좌우함
+          - 비즈니스 메타데이터 - 비즈니스 용어/맥락 정보로 활용 -설명정보(비즈니스 +보안, 개인 정보_
+          - 기술 메타데이터 - 컬럼, 자주 사용하는 sql , 개발자들이 사용하는 문서 등 정보 (컬럼 설명 메타데이터 )
+          - 운영 메타데이터 -
+  
+
+* 메타데이터의 최신성 관리 굉장히 중요 
+![image](https://github.com/user-attachments/assets/eac8dc83-4119-475d-b7e0-5bbb5a4d76a1)
+
+* 좋은 예시를 보여주는 것 중요
+-> llm에게  자연어질문 - 고품질 sql의 pair 데이터를 예시로 보여주는 것 중요
+-> 이러한 데이터를 회사에서 자산화하는 게 나중에 굉장히 중요해 보임
+
+  ![image](https://github.com/user-attachments/assets/cd27f278-b284-426e-95e9-6d5da5641ce6)
+
+* 또한 용어사전 고도화에 많은 노력을 기울임(단어의 뜻뿐만 아니라 비즈니스의 맥락도 녹아들 수 있도록)
+  -> 좋은 예시 데이터가 부족하더라도 좋은 성능을 나타내는 데 굉장히 중요
+
+* 주요 개선영역 4가지
+  - 리트리버에서 검색 정확성과 효율성을 높이는데 (하이브리드 서치,키워드 부스팅, ann 등)
+  - 파인튜닝 
+  - 비즈니스 맥락 정보를 워크플로우 내에서 더욱 정교하게 반영 및 검증
+  - 객관적으로 평가체계 고도화 
+![image](https://github.com/user-attachments/assets/13676148-e7f0-4ccf-9d71-aeae7f0ead1e)
+
+* 5가지 측면에서 의미있는 변화들 경험
+![image](https://github.com/user-attachments/assets/50c33962-f2b6-408f-97a0-68491347673c)
+
+* AWS기반의 text-to-sql 구축과정의 장점
+    - 최신 모델을 인프라 구축이나 신경 쓸 필요없이 사용 가능
+    - 
+![image](https://github.com/user-attachments/assets/1a56f8df-76d5-4c88-ab67-1d998da01995)
+
+* 브로쿼리의 앞으로 계획 - 고도화 및 확장 계획 
+![image](https://github.com/user-attachments/assets/41e70279-4e10-43d0-8b06-865e052f560c)
+
+* 더 자세한 내용 - 당근페이 블로그 참고!! 
+
+---
+
+### Multi-Agent AI로 고객 경험 혁신 및 생산성 향상: 하나투어의 생성형 AI 챗봇
+
+(전주형 솔루션즈 아키텍트) 
+멀티에이전트 AI로 고객혁신 사례
+생성형 AI 기반 서비스 고민 
+* 생성형 AI 사례 
+  - 24시간 상담사 챗봇 
+  - 번역 챗봇
+  - 개인 맞춤형 상품 개발 
+  - 연구 및 개발 
+
+* 싱글 에이전트 
+![image](https://github.com/user-attachments/assets/00ea15d3-aa7a-41bc-a038-c30fdcd71cf7)
+복잡한 구조로 계속 추가하고 가다보면 느려지고 한계가 생김
+![image](https://github.com/user-attachments/assets/8ae56bbc-1083-4949-b8d1-30aa18b38019)
+병목현상 발생, 싱글 에이전트가 전체 시스템을 가담하니 그 에이전트가 무너지면 다 무너짐 (신뢰도 하락) 
+-> 일의규모를 줄이고 여러 에이전트를 두자! - 분리형 에이전트 
+-> BUT, 한계: 인터페이스가 많아지면서 접근성 어려워짐 , 데이터의 일관성도 어려워짐 
+-> 멀티에이전트 콜라보레이션 구조로 LLM 서비스를 생성
+-> SUPERVISOR 에이전트 + 여러 전문 에이전트 
+
+![image](https://github.com/user-attachments/assets/012cab08-67d8-4501-ab03-efc9778ba78d)
+
+
+(김택권 하나투어 CTO) 
+* 하이(H-AI) 서비스- 멀티에이전트 서비스
+![image](https://github.com/user-attachments/assets/d1ede62a-1a28-4b78-acaf-dc5fe8179de8)
+amazon bedrock 사용하여 상담챗봇 생성 - 내부시스템과 연계관련 장점
+
+* 여행정보 특화 추천 특화 에이전트
+![image](https://github.com/user-attachments/assets/32520b8b-cad0-4572-9abf-ac956c3bd5ae)
+여행정보와 FAQ - 벡터 db 
+
+* 상담챗봇 에이전트 
+![image](https://github.com/user-attachments/assets/0fc3e69c-55c4-4db7-b60b-714ab00adb1e)
+청킹기준 세우는 것 굉장히 중요
+
+* 예약기반 
+![image](https://github.com/user-attachments/assets/af861532-bff1-4037-a5ed-c5c3719500c1)
+
+예약내역데이터 - 민감정보는 제외 - 여행 여정 정보만 
+
+* 한계점 
+![image](https://github.com/user-attachments/assets/d071b94b-20bb-4997-bb17-f8bf08ce8a96)
+--> 멀티에이전트로 전환 
+
+![image](https://github.com/user-attachments/assets/3ec1bf3e-731f-4449-a692-aac7c95f6c7b)
+세션 히스토리 역할 강화 
