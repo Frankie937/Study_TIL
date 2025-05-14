@@ -84,7 +84,7 @@ high tech 기술 건설/엔지니어링 등 첨단회사
 
 ### Amazon Bedrock 기반Text-to-SQL로 완성하는 데이터 혁신: 당근페이의 핀테크 성공전략
 
-2023년 amazon bedrock 출시 - 기업형 생성형 ai 활용 가능하도록 
+2023년 amazon bedrock 출시 - 기업형 생성형 ai 활용 가능하도록
 amazon nova - llm 활용할 수 있도록 - 빠르게 생성형 ai 도입
 ai 산업 예산:  450억 달러 > 2000억 달러 
 
