@@ -156,8 +156,8 @@ retriever_tool = create_retriever_tool(
 )
 ```
 
-** langgraph의 흐름을 구성할 때, 재귀에 빠지지 않도록 여러 설계 고민과 테스트가 필요함!!  
-** agent를 쓰면 여러 task를 수행할 때, tool을 적절할 사용할 수 있기 때문에 라우팅 chain이 줄어듦!! 
+**langgraph의 흐름을 구성할 때, 재귀에 빠지지 않도록 여러 설계 고민과 테스트가 필요함!!  
+**agent를 쓰면 여러 task를 수행할 때, tool을 적절할 사용할 수 있기 때문에 라우팅 chain이 줄어듦!! 
 --- 
 
 ### [프로젝트] Adaptive RAG
