@@ -2,9 +2,9 @@
 (영상 : https://www.youtube.com/watch?v=W_uwR_yx4-c) 
 (유튜브 테디노트 - 영상제목 : #LangGraph 개념 완전 정복 몰아보기(3시간))
 
-✅ 소스코드 링크: 
+*  소스코드 링크: 
 https://github.com/teddylee777/langchain-kr/tree/main/17-LangGraph/02-Structures
-✅ 타임라인
+*  타임라인
   - 00:00 LangGraph 개요
   - 21:29 LangGraph 세부 기능(State, Node, Edge, Conditional Edge, Compile)
   - 46:56 LangGraph 로 자유롭게 그래프 로직 구성(흐름 엔지니어링)
