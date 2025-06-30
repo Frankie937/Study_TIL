@@ -5,15 +5,15 @@
 *  소스코드 링크: 
 https://github.com/teddylee777/langchain-kr/tree/main/17-LangGraph/02-Structures
 *  타임라인
-  - 00:00 LangGraph 개요
-  - 21:29 LangGraph 세부 기능(State, Node, Edge, Conditional Edge, Compile)
-  - 46:56 LangGraph 로 자유롭게 그래프 로직 구성(흐름 엔지니어링)
-  - 1:10:30 Naive RAG(전통적인 방식의 RAG) 를 LangGraph 로 구현
-  - 1:31:43 답변의 할루시네이션 관련성 평가 모듈 추가
-  - 1:43:28 웹 검색 노드 추가
-  - 1:51:37 쿼리 재작성 모듈 추가
-  - 2:00:55  [프로젝트] Agentic RAG - 에이전트를 활용한 RAG
-  - 2:24:50  [프로젝트] Adaptive RAG
+	  - 00:00 LangGraph 개요
+	  - 21:29 LangGraph 세부 기능(State, Node, Edge, Conditional Edge, Compile)
+	  - 46:56 LangGraph 로 자유롭게 그래프 로직 구성(흐름 엔지니어링)
+	  - 1:10:30 Naive RAG(전통적인 방식의 RAG) 를 LangGraph 로 구현
+	  - 1:31:43 답변의 할루시네이션 관련성 평가 모듈 추가
+	  - 1:43:28 웹 검색 노드 추가
+	  - 1:51:37 쿼리 재작성 모듈 추가
+	  - 2:00:55  [프로젝트] Agentic RAG - 에이전트를 활용한 RAG
+	  - 2:24:50  [프로젝트] Adaptive RAG
 
 
 (아직 수정 중... 강의 들으면서 메모한 내용들) 
