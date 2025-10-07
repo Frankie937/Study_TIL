@@ -1,4 +1,9 @@
+<img width="818" height="465" alt="image" src="https://github.com/user-attachments/assets/7a461646-71e3-49f1-8945-25bf8090d712" />
+https://event-us.kr/lablup/event/111442
+
 ### 효율적인 Agentic 아키텍처 구성을 위한 개발 Tip (이경록님- 테디노트)
+<img width="329" height="80" alt="image" src="https://github.com/user-attachments/assets/8879b0e9-15c3-4b0f-b57e-1cc691a880f4" />
+
 
 - MCP 툴 + 지식데이터베이스 관리하는게 중요
     -> 유용한 mcp 를 만들려면 유용한 기획이 필요
@@ -41,3 +46,7 @@
 
 - 소버린 AI 아쉬운 점?
   - 어플리케이션에 대한 고민 /엔지니어링에 대한 고민-> 이런 부분이 외국에 비해 많이 부족하다고 생각함
+
+
+
+<img width="481" height="804" alt="image" src="https://github.com/user-attachments/assets/806743f2-92ad-4433-8624-fbb3c72e6966" />
