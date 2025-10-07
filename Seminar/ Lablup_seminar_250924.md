@@ -23,12 +23,13 @@
 - Agent의 강점? 재시도를 한다는 점 / recursion test를 한다는 것
 - 싱글에이전트 한계: 도구의 개수 너무 많으면 지연시간, 성능 저하 (prompt도 하나 밖에 들어갈 수 없음)
 - supervisor 패턴이 유지보수관점에서 좋음 (에이전트 단위의 모듈화)
-
+ 
 
 - agent의 기술적 기능
-   - Recursion
-   - Routing (질문의 요청 수준에 따라 모델을 다르게 사용하게끔 하는 것도 중요 ex- 점심메뉴 추천해줘 같은 질문은 논문 분석 요청과 같은 수준의 모델을 사용할 필요가 없음! 라우팅은 필수!)
+   - Recursion (**sequential 하게 도구호출이 되는 게 중요한데, 이때 system prompt를 활용해서 그런 순차성에 대해 강제성을 띄워서 instruction 하면 되는 것!!) 
+   - Routing (질문의 요청 수준에 따라 모델을 다르게 사용하게끔 하는 것도 중요! ex- 점심메뉴 추천해줘 같은 질문은 논문 분석 요청과 같은 수준의 모델을 사용할 필요가 없음! 라우팅은 필수!/ 모델을 분기처리할 때도 라우팅을 사용하고/ 어떤 도구를 선택할 때도 라우팅을 사용하고 등등) 
      - agentic한 라우팅 (확장성 면에서 function calling 보다 용이함)
+       - tool name과 tool description 상세하게 작성/ system prompt에 instruction 주기
      - function calling 라우팅 (룰베이스 기반- 성능은 안전정 그러나 확장성이 어려움)
        
 - 워크플로우 흐름관리
@@ -43,7 +44,7 @@
   - RAG, 멀티 에이전트 시스템 등 반드시 들어가야 하는 HITL 기법 (유저에게 한 번 더 허락을 받는 - 유저 입장에서 안심하고 사용 가능)
     
 - MCP
-  - 독립적인 knowledge database
+  - 독립적인 knowledge database 중요
   - sequential한 방식이 관리에 더 용이 (도구 호출이 sequential하게 되도록 설계 해주는 게 좋음)
   - 계층적 호출 구조
   
