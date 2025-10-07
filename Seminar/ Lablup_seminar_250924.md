@@ -1,7 +1,7 @@
 <img width="818" height="465" alt="image" src="https://github.com/user-attachments/assets/7a461646-71e3-49f1-8945-25bf8090d712" />
-( https://event-us.kr/lablup/event/111442)
-* 20250924 래블업 세미나 - 래블업은 ‘Make AI Composable’를 주제로 5회 컨퍼런스를 개최
-* 장소 :서울 서초구 강남대로 27 양재 aT센터 3층 세계로룸
+- https://event-us.kr/lablup/event/111442)
+- 20250924 래블업 세미나 - 래블업은 ‘Make AI Composable’를 주제로 5회 컨퍼런스를 개최
+- 장소 :서울 서초구 강남대로 27 양재 aT센터 3층 세계로룸
 
 
 ### 효율적인 Agentic 아키텍처 구성을 위한 개발 Tip (이경록님- 테디노트)
