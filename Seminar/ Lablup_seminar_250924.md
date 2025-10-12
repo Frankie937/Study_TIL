@@ -42,7 +42,8 @@
 - Human in The Loop (HITL)
   - 해당 내용 굉장히 중요!
   - RAG, 멀티 에이전트 시스템 등 반드시 들어가야 하는 HITL 기법 (유저에게 한 번 더 허락을 받는 - 유저 입장에서 안심하고 사용 가능)
-    
+ <img width="1001" height="496" alt="image" src="https://github.com/user-attachments/assets/d6a365a2-797d-4be8-b9cf-411c1e8cd653" />
+   
 - MCP
   - 독립적인 knowledge database 중요
   - sequential한 방식이 관리에 더 용이 (도구 호출이 sequential하게 되도록 설계 해주는 게 좋음)
