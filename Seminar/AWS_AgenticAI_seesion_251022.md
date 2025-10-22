@@ -1,20 +1,20 @@
 ### Powering Business Velocity with Agentic AI (홍기성 솔루션즈아키텍트)
 
 - AI현황
-    - AI격차 (MIT 리포트)
+    - AI격차 (MIT 리포트)  - 95%  기업 AI로 이익을 내지 못하고 있음
     - SaaS에서도 많은 패러다임이 일어나고 있음
         - AI agnet가 탑재된 SaaS 로 변화
 - 에이전틱 AI의 시대
-    - agnetic loop
-- AWS GEN AI 서비스
+    - agnetic loop 의 구성
+- AWS Gen AI 서비스
     - amazon bedrock - aganetcore (개발 배포 쉽게 할 수 있는 서비스)
-    - aws newyork summit - nova act / strands agent
-    - 주요 3가지
+    - aws newyork summit에서 GA했던 주요 서비스 :  nova act / strands agent
+    - Agentic Ai 주요 3가지
         - kiro (IDE)
         - amazon Q developer(plug in) — 보안 : opted out 기능이 있음 & Private endpoint (VPC endpoint 제공)
-        - amazon CLI (AWS 리소스 사용 시, 관리할 때 굉장히 쉽게 관리 및 분석 가능 - aws 네이티브 서비스들과 연동 쉽게 가능 + MCP 연동)
+        - amazon CLI (AWS 리소스 사용 시, 관리할 때 굉장히 쉽게 관리 및 분석 가능 - aws 네이티브 서비스들과 연동 쉽게 됨 + MCP 연동)
     - aws marketplace
-    - agnet를 위한 SDK
+    - agent를 위한 SDK
         - nova act
         - strands agnet - 오픈소스 - python 국한
     - amazon bedrock
@@ -37,3 +37,8 @@
         - multi-agent 로 재구축
         - 모델버전을 다르게 사용 (요청 수준에 따라)
     - 포스코 - 생성형 AI 기반 안전관제 시스템
+
+- 2025 AWS industry week - Agentic AI 핸즈온 워크샵
+    - [https://pickled-sesame-0aa.notion.site/2025-Agentic-AI-Workshop-AWS-AI-x-Industry-Week-2939091029c48017b113fe2972424a91](https://www.notion.so/2025-Agentic-AI-Workshop-AWS-AI-x-Industry-Week-2939091029c48017b113fe2972424a91?pvs=21)
+ 
+  
