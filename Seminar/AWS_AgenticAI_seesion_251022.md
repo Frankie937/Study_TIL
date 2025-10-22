@@ -1,0 +1,33 @@
+### Powering Business Velocity with Agentic AI (홍기성 솔루션즈아키텍트)
+
+- AI현황
+    - AI격차 (MIT 리포트)
+    - SaaS에서도 많은 패러다임이 일어나고 있음
+        - AI agnet가 탑재된 SaaS 로 변화
+- 에이전틱 AI의 시대
+    - agnetic loop
+- AWS GEN AI 서비스
+    - amazon bedrock - aganetcore (개발 배포 쉽게 할 수 있는 서비스)
+    - aws newyork summit - nova act / strands agent
+    - 주요 3가지
+        - kiro (IDE)
+        - amazon Q developer(plug in) — 보안 : opted out 기능이 있음 & Private endpoint (VPC endpoint 제공)
+        - amazon CLI (AWS 리소스 사용 시, 관리할 때 굉장히 쉽게 관리 및 분석 가능 - aws 네이티브 서비스들과 연동 쉽게 됨 + MCP 연동)
+    - aws marketplace
+    - agnet를 위한 SDK
+        - nova act
+        - strands agnet - 오픈소스 - python 국한
+    - amazon bedrock
+        - 다양한 벤더사에서 제공하는 llm 사용 가능
+        - agentcore- GA 되었음
+            - 런타임(다양한 프레임워크로 배포가능)/메모리(**단기/장기메모리)/계정관리/게이트웨이(여러 api 연결)/코드실행기/브라우저툴/모니터링
+        - 지속가능한 LLM 개발 가능?
+        - twelveLabs출시 (국내 기업 개발 - 영상분석하는 모델 )  - 마렝고/페가수스
+    - sagemaker AI
+    - S3 - vector 기능 출시
+
+- 적용사례  - 2가지
+    - LG전자 - 데이터분석 리포트 자동화
+        - multi-agent 로 재구축
+        - 모델버전을 다르게 사용 (요청 수준에 따라)
+    - 포스코 - 생성형 AI 기반 안전관제 시스템
