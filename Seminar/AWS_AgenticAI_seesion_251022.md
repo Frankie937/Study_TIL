@@ -25,6 +25,7 @@
         - twelveLabs출시 (국내 기업 개발 - 영상분석하는 모델 )  - 마렝고/페가수스
     - sagemaker AI
     - S3 - vector 기능 출시
+       - 참고링크: https://aws.amazon.com/ko/blogs/korea/introducing-amazon-s3-vectors-first-cloud-storage-with-native-vector-support-at-scale/
 
 - 적용사례  - 2가지
     - LG전자 - 데이터분석 리포트 자동화
