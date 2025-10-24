@@ -66,9 +66,4 @@ for letter in yield_abc():
 
 ### 비교표 
 
-yield                 |  return              
-----------------------+----------------------
-값을 하나씩 차례대로 내보낸다      |  한 번에 한 개의 값을 반환     
-함수 실행 상태를 저장 후 재개 가능  |  함수 실행 종료 (상태 저장 안 함)
-메모리 사용 절약 가능          |  모든 값을 메모리에 올림       
-반복 가능한 제너레이터 객체 반환    |  단일 값 반환             
+<img width="678" height="190" alt="image" src="https://github.com/user-attachments/assets/131e5dca-ab01-4809-84e6-4657c087c6be" />
