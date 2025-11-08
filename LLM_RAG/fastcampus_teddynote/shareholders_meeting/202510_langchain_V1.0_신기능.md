@@ -22,6 +22,16 @@
      - tool context: tool이 엑세스하고 생성할 수 있는 것 (state, store, runtime context에 대한 읽기/쓰기)
      - life-cycle context: model과 tool call 사이에 발생하는 것 (요약, guardrail, 로깅 등)
    
-* langchain 신기능 Agent Builder 출시 - No code Agnet building platfrom!
+* langchain 신기능 LangSmith -  Agent Builder 출시 - No code Agnet building platfrom!
    - 참고링크 1: https://blog.langchain.com/langsmith-agent-builder/
    - 참고링크 2: https://digitalbourgeois.tistory.com/2240
+
+* runtime.context 기능 - 굉장히 유용
+* response formtat 기능 (응답형식)
+* create_react_agent > create_agent 함수로 변경
+* Middleware 기능
+  - Human in the Loop Middleware : 승인 필요여부에 따라 tool을 컨트롤 할 수 있는 기능이 생김 (너무 좋음!!! -이전에는 이런 자잘한 기능 때문에 하나 하나 노드로 다 구현해줘야 했었는데...)
+     - 세부적으로 중간에 interrupt를 할 tool을 쉽게 정할 수 있음!!!
+  - wrap_model_call 데코레이터 : 모델 호출 직전에 wrap_model_call이 일어나면서 모델을 동적으로 변경처리 가능 (일반모델/추론모델 사용해야 하는 상황에 따라 동적으로 모델 변경하여 처리 가능 - model selection이 가능 ex- 긴 메세지 기준에 따라 일반/추론모델 변경, 구독여부에 따라 일반/추론모델 변경 등)
+  - wrap_tool_call 데코레이터 : tool 호출 직전에 wrap_tool_call이 일어나면서 tool관련 오류 처리 등 가능
+  - dynamic prompt (동적 시스템 프롬프트) 기능 :  
