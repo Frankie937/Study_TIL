@@ -46,3 +46,12 @@
 * langgraph middleware (참고로 middleware는 한 번에 여러 개 추가 가능) 
   - SummarizationMiddleware : 멀티턴 대화 구현 중 대화가 계속 길어지면 토큰비용 잡아먹기 때문에 예를 들어 max_token 4000이 넘어가면 요약하게 끔 구현
   - ModelCallLimitMiddleware : 모델 호출 제한 기능 (과도한 비용 방지)
+  - ToolCallLimitMiddleware : API비용 나가는 tool 호출 제한 기능 (과도한 비용 방지)
+  - ModelFallbackMiddelware: 모델이 실패할 때, 다른 대체 모델로 자동 폴백(모델 사용 중단 방지)
+  - PIIMiddleware (PII 감지/PII detection): 민감 개인 정보 감지(redact -   네모 블락으로 치환/ mask - 마스킹처리)
+  - ToolRetryMiddleware : 도구 재시도 (실패한 도구 호출을 자동으로 재시도 하는)
+
+* langgraph - multiagent 구현도 굉장히 쉬워짐
+  - tool로 랩핑하여 supervisor agent에 tool로 붙여주면 됨
+ 
+### Langchain V1.0으로 인한 제일 중요한 지점: 정말 필요한 핵심 비즈니스 로직에 시간을 더 투자할 수 있게끔 다른 기능들을 훨씬 쉽게 구현 가능하도록 만든 것!!! 
