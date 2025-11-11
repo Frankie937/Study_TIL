@@ -24,7 +24,7 @@
 
 ### 5. LLM에 강화학습이 도입된 이유: RLHF
 
- LLM에 강화학습이 본격적으로 도입된 것은 RLHF(Reinforcement Learning from Human Feedback) 형태였다. 기본 아이디어는 이렇다. LLM에게 프롬프트를 주고 여러 응답을 생성하게 한 다 사람이 어떤 응답이 더 좋은지 라벨링한다. 이 선호도 데이터로 보상 모델(reward model)을 학습시키고, 이 보상 모델을 사용해 LLM을 강화학습으로 fine-tuning한다.
+ LLM에 강화학습이 본격적으로 도입된 것은 RLHF(Reinforcement Learning from Human Feedback) 형태였다. 기본 아이디어는 이렇다. LLM에게 프롬프트를 주고 여러 응답을 생성하게 한 다음, 사람이 어떤 응답이 더 좋은지 라벨링한다. 이 선호도 데이터로 보상 모델(reward model)을 학습시키고, 이 보상 모델을 사용해 LLM을 강화학습으로 fine-tuning한다.
 
 ### 6. SFT의 한계와 할루시네이션 문제
 
