@@ -1,4 +1,4 @@
-
+(아직 정리중) 
 * 코드 : https://github.com/teddynote-lab/deep-agents-from-scratch
 
 * context window 폭발 - vanishing gradient와 유사한 문제
