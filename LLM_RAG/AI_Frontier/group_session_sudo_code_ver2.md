@@ -60,7 +60,7 @@ def retrieve_references(state: WorkflowState):
     keywords = state["analysis_result"]["keywords"]
     
     # 가상의 Vector DB (실제로는 Multimodal Embedding 된 DB 연결)
-    # 여기서는 텍스트로 예시를 들지만, 실제로는 영상의 '분위기' 벡터로 검색됨
+    # 여기서는 텍스트로 예시를 들지만, 실제로는 영상의 정보를 바탕으로 한한 벡터로 검색됨
     fake_db = [
         "성공사례: '비싼 쓰레기'라고 솔직하게 깐 리뷰 (조회수 100만, 컷전환 빠름)",
         "실패사례: 스펙만 나열하다 끝난 리뷰 (조회수 2천, 컷전환 느림)",
