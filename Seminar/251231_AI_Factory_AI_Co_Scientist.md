@@ -21,7 +21,7 @@
 <img width="745" height="388" alt="image" src="https://github.com/user-attachments/assets/bb628c9d-a147-4925-a682-8d0cac74b201" />
 
 
-### 문서화 및 보고 단계 
+### 4) 문서화 및 보고 단계 
 * Notebook LM 많이 사용 (지식 전문가 수준의 스토리로 작성해줌)
     - 클릭 한 번으로 인포그래픽/슬라이드/영상까지 제작해주기 때문에 너무 간편하고 퀄리티도 좋음
  <img width="756" height="377" alt="image" src="https://github.com/user-attachments/assets/6eb143f4-e092-4c8a-a0f9-1bb52ada2c32" />
