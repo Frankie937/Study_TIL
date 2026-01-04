@@ -26,10 +26,13 @@
 
 ### 3. LangGraph V1 및 에이전트 설계 전략
 LangGraph V1 업데이트를 통해 에이전트 구축이 더 직관적이고 구조적으로 변했습니다.
+### 구조적 개선 및 신기능
+* create_agent : 복잡한 그래프 정의 없이도 직관적으로 에이전트를 구축할 수 있는 API가 도입되었습니다.
+  <img width="1032" height="552" alt="image" src="https://github.com/user-attachments/assets/86fe2b07-37d8-41ce-b355-d2896942a709" />
 
-* 구조적 개선 및 신기능
-   - create_agent API: 복잡한 그래프 정의 없이도 직관적으로 에이전트를 구축할 수 있는 API가 도입되었습니다.
-   - 미들웨어(Middleware) 패턴: 인증, 로깅, 에러 처리 등 공통적으로 필요한 기능을 비즈니스 로직과 분리하여 깔끔한 아키텍처를 설계할 수 있습니다.
+* 미들웨어(Middleware) 패턴: 인증, 로깅, 에러 처리 등 공통적으로 필요한 기능을 비즈니스 로직과 분리하여 깔끔한 아키텍처를 설계할 수 있습니다.
+  <img width="1498" height="776" alt="image" src="https://github.com/user-attachments/assets/78b512cd-118d-4f17-8d32-c93dcce9f654" />
+
 
 * DeepAgents 설계 전략 (심화)
 복잡한 태스크를 처리하기 위한 고급 설계 패턴입니다.
