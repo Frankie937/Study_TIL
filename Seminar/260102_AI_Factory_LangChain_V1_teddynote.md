@@ -1,4 +1,4 @@
-(영상: http://youtube.com/watch?v=Ipa6JNbFq4g) 
+<img width="1228" height="803" alt="image" src="https://github.com/user-attachments/assets/3a753458-0993-4e1a-99d4-47b17ddc7cd0" />(영상: http://youtube.com/watch?v=Ipa6JNbFq4g) 
 
 ## 랭체인(LangChain)과 랭그래프(LangGraph) V1 업데이트 이후의 핵심 기능과 에이전트 개발 전략
 
@@ -34,7 +34,10 @@ LangGraph V1 업데이트를 통해 에이전트 구축이 더 직관적이고 �
 
 * 미들웨어(Middleware) 패턴: 인증, 로깅, 에러 처리 등 공통적으로 필요한 기능을 비즈니스 로직과 분리하여 깔끔한 아키텍처를 설계할 수 있습니다.
   <img width="1498" height="776" alt="image" src="https://github.com/user-attachments/assets/78b512cd-118d-4f17-8d32-c93dcce9f654" />
-
+  - 예를 들어, 모델에 적용하기 전에 요약하는 로직을 넣을 때
+      <img width="1504" height="628" alt="image" src="https://github.com/user-attachments/assets/c149c8af-117d-43cc-b503-a26522fc7859" />
+  - 알짜 배기 미들웨어를 built-in 해서 이미 만들어놨음(그냥 쓰면 됨/ custom해서 만드는 것고 가능 - AgentMiddleware 상속받아서) 
+       <img width="1180" height="793" alt="image" src="https://github.com/user-attachments/assets/daaeef85-4fce-41ba-88a1-dc14e59f05a1" />
 
 * DeepAgents 설계 전략 (심화)
 복잡한 태스크를 처리하기 위한 고급 설계 패턴입니다.
