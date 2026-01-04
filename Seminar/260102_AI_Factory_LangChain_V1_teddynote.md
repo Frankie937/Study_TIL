@@ -1,4 +1,4 @@
-<img width="1228" height="803" alt="image" src="https://github.com/user-attachments/assets/3a753458-0993-4e1a-99d4-47b17ddc7cd0" />(영상: http://youtube.com/watch?v=Ipa6JNbFq4g) 
+(영상: http://youtube.com/watch?v=Ipa6JNbFq4g) 
 
 ## 랭체인(LangChain)과 랭그래프(LangGraph) V1 업데이트 이후의 핵심 기능과 에이전트 개발 전략
 
@@ -36,8 +36,12 @@ LangGraph V1 업데이트를 통해 에이전트 구축이 더 직관적이고 �
   <img width="1498" height="776" alt="image" src="https://github.com/user-attachments/assets/78b512cd-118d-4f17-8d32-c93dcce9f654" />
   - 예를 들어, 모델에 적용하기 전에 요약하는 로직을 넣을 때
       <img width="1504" height="628" alt="image" src="https://github.com/user-attachments/assets/c149c8af-117d-43cc-b503-a26522fc7859" />
-  - 알짜 배기 미들웨어를 built-in 해서 이미 만들어놨음(그냥 쓰면 됨/ custom해서 만드는 것고 가능 - AgentMiddleware 상속받아서) 
+  - 알짜 배기 미들웨어를 built-in 해서 이미 만들어놨음(그냥 쓰면 됨)
        <img width="1180" height="793" alt="image" src="https://github.com/user-attachments/assets/daaeef85-4fce-41ba-88a1-dc14e59f05a1" />
+  - custom해서 만드는 것고 가능 - AgentMiddleware 상속받아서 하거나 데코레이터 형식으로 가능
+       - <img width="1479" height="788" alt="image" src="https://github.com/user-attachments/assets/185601a3-2ff8-4258-8c80-92633730fbf9" />
+       - <img width="1498" height="793" alt="image" src="https://github.com/user-attachments/assets/309cfffa-54c9-4ffd-906e-71fac63bc030" />
+
 
 * DeepAgents 설계 전략 (심화)
 복잡한 태스크를 처리하기 위한 고급 설계 패턴입니다.
