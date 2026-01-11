@@ -65,5 +65,4 @@ langchain 커뮤니티가 외부적으로 볼 때 600여가지의 툴을 제공�
 
 ### 밑바닥부터 AI Agent 구현 왜?
 * AI Agent를 잘 구성하기 위해 중요한 요소 
-<img width="907" height="321" alt="image" src="https://github.com/user-attachments/assets/678cae58-ae2e-4110-8b63-88075ab7be91" />
-
+<img width="973" height="457" alt="image" src="https://github.com/user-attachments/assets/f06fb64a-22a7-41a8-9466-0160d94d178b" />
