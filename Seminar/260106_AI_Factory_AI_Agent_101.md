@@ -61,3 +61,9 @@ langchain 커뮤니티가 외부적으로 볼 때 600여가지의 툴을 제공�
 
 사용자가 입력하는 자연어를 넣더라도 에이전트 시스템이 무리없이 잘 작동하느냐 
 
+
+
+### 밑바닥부터 AI Agent 구현 왜?
+* AI Agent를 잘 구성하기 위해 중요한 요소 
+<img width="907" height="321" alt="image" src="https://github.com/user-attachments/assets/678cae58-ae2e-4110-8b63-88075ab7be91" />
+
