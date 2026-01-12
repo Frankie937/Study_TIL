@@ -24,7 +24,6 @@ dead, summarization, compression, pruning 등등의 작업들
 
 
 ### AI 에이전트는 어떻게 평가할 것인가? 
-밑바닥부터 구현 ?
 
 * 평가 3가지 - 무엇을 평가할 것인가 
 1) 에이전트 end to end 평가 
