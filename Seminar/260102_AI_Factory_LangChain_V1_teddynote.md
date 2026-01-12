@@ -51,3 +51,100 @@ LangGraph V1 업데이트를 통해 에이전트 구축이 더 직관적이고 �
 
 ### 4. Recap
 이번 업데이트는 단순히 기능 추가를 넘어, 개발자가 복잡한 에이전트 시스템을 더 쉽게 구축(Builder), 관리(Insights), 그리고 확장(DeepAgents 패턴)할 수 있도록 돕는 "어플리케이션 아키텍처의 고도화"에 초점을 맞추고 있습니다.
+
+
+---
+(다시 정리)
+
+LangGraph Langchain이 정답은 아니지만, LLM 어플리케이션을 쉽게 만들 수 있는 프레임워크로서 좋다. 
+
+### LangChain 에코시스템 
+LangChain(기본 기능함수 등) / LangGraph(흐름 구성) / LangSmith (모니터링)
+
+### V1.0 버전 업데이트 주요 변화 - LangSmith 주요 4가지 
+1) LangSmith Insights : 챗봇시스템을 오픈하게 되면, 굉장히 많은 대화가 쌓이게 됨. 
+직장인 A씨는 사내 문서를 검색하고 싶고 B씨는 이메일 자동화 에이전트 
+분류를 위해 카테고리를 도와주는 기능 (토큰 비용 및 시간은 소요됨 -> 자동화 하면 지속적으롭 분류함) 
+
+2) Multi-turn Evaluation
+멀티턴 대화를 평가하는 게 쉽지는 않음 
+
+3) LangSmith Agent Builder
+- 배경지식을 알아 볼 필요가 있음 : 작년 n8n, dify, Open AI Agent Builder 등 노코드 툴이 트렌드였음.
+- 그러나, 해당 툴들은 workflow tool이다. 사실 비개발자들이 그 툴을 사용하기에 진입장벽이 있다
+- 그래서, 자연어로 에이전트를 구축할 수 있도록 만든 것이 LangSmith Agent Builder이다. 
+- 코드로 구현하는 걸 100% 라고 하면, 노코드 툴로 75~85%정도 , Agent Builder는 70~80%정도 커버가 가능한 수준이라고 볼 수 있다고 생각.
+(작업할 상황과 설계에 따라 굳이 모든 걸 LangGraph로 구현할 필요가 없음) 
+- 바이브 LangGraph 느낌 (구글 Opal 비슷) 
+
+4) Polly - LangSmith Trace에 추가된 기능 
+- Trace에 대한 오류 요약, 분석, 해결책을 제시 해줌 (prompt개선 / 도구호출전략 개선 등등)
+
+### V1.0 버전 업데이트 주요 변화 - LangGraph 
+1) Create Agent 
+- create_react_agent > create_agent 
+- 해당 create_agent 함수가 받는 파라미터 변화
+	 - system_prompt
+	 - tools
+	 - middleware (굉장히 유용한 기능 - built-in 미들웨어도 있고, custom하게 미들웨어를 만들 수 도 있음)  
+	 - response_format (정형화된 포맷으로 답변을 지정 할 수 있도록 파라미터로 아예 내재화된 옵션으로 변화 - 자동화 연계 시 굉장히 유용한 기능) 
+	 - state_shcemam
+	 - context_schema 
+
+
+2) Middleware
+- 만약에 예를 들어, 검색 도구를 호출 했는데 구글 검색결과 지저분한 것들이 모두 context에 다 들어가면 금방 context가 차서 폭발하거나, 할루네이션을 뱉어버리거나 등등 문제가 있음...
+- 그래서 그러한 문제를 해결하기 위해 텍스트 전처리 등의 기능에 대한 코드를 덕지 덕지 앞 뒤로 추가하거나 뜯어봐야 했었는데, 대신 미들웨어의 기능을 활용 
+- before agent / before model/ after model / after agent 등 
+    - (예시) 할루시네이션 체커 로직을 최종 답변에 넣기 전에 넣고 싶다 하면 after agent에 middleware를 넣어주면 됨 
+    - (예시) 쿼리라우팅 로직 - before agent 에 해당 middleware를 넣어주면 됨 
+	- (예시) 메세지 큐에 너무 많은 context가 차있을 수 있기에 after model에 요약 로직을 middleware로 넣어주면 됨 
+- built-in Middleware가 langchain 도큐먼트에 있음 (https://docs.langchain.com/oss/python/langchain/middleware/built-in)
+- custom middleware도 만드는 것 가능 (AgentMiddleware 상속받아서 하거나 데코레이터 형식으로 가능) 
+- 미들웨어를 잘 사용하면, 적절하게 세부 로직을 조작할 수 있고, 비용도 절감 가능 하는 등 굉장히 유용한 기능이다!!! 
+
+
+3) Runtime context  
+- context engineering 
+- 에이전트가 잘 안되는 이유 : llm 역량이 충분하지 않음 / 올바른 컨텍스트가 전달되지 않아서 
+- transient context / persistant context 
+- invoke 하는 시점에 context shcema를 참조할 수 있다.
+- 나중에 user_name을 확인해서 해당 context를 tool 호출할 때 넘길 수 있음 (기존에 도구를 호출하는 주체/ 대상(tool)이 있는데 이럴 경우, context를 서로 받지 않았었음 )
+- 예를 들어, llm이 파라미터를 지정해서 넘기는 프로세스가 있는데, 도구호출이 유저가 원하는 방향으로 호출이 일어나지 않을 수 있는데 그런 부분을 보완하는 것 > 그래서, 할루시네이션도 줄이고 토큰 비용도 줄일 수 있음 
+- 그래서, tool 호출할 때, 주입해야 할 정보가 있을 경우 runtime context를 활용하면 좋음!! 
+
+
+4) Deep agent
+- claude code, manus, antigravity, agnet harness 등 아키텍처 그걸 묘사해서 만든게 deep agent 
+- Agent 아키텍처관련 된 부분이기에 deep agent 를 뜯어보면 아키텍처 관점에서 나만의 agent 아키텍처를 정립해나가는 데에 있어서 굉장히 많은 공부가 됨 
+- 멀티 에이전트가 나온배경울 생각해보면, 단일 에이전트가 복잡한 작업을 모두 처리하기 어렵고, 단순 구조라, 짧은 맥락/단기 작업에는 충분하지만 다단계 연구, 대규모 코드베이스 작업, 장기 맥락 유지가 필요한 시나리오에서는 쉽게 망가지는 한계 
+- 장기 맥락을 유지하면서 복잡한 시스템이 가능할 지에 대해서 고민했던 게 멀티 에이전트 시스템이 나온 것 
+- 그러나, 실질적인 좋은 결과로 이어지지는 않음 (적용되지 않은 부분 : ) 
+- 그래서, 단순히 에이전트 10개 있다고 해서 성능이 곱하기 10배가 되는 게 아니라는 것!! 
+4-1) TO-do 플래닝(사전계획 플래닝)
+- 
+4-2) file-system 으로 관리 (공간 안의 메모리 잡아 먹는 걸 줄이고, 토큰비용 줄어들고, 효율적으로 관리 가능)
+- context off loading system : 참조 context 파일을 읽어올 때 off loading 방식 
+- main agent 에게 주어지는 맥락을 파일 형태로 관리하고, 파일 목록을 조회해서 관련성 있는 파일을 off loading 하는 방식으로 가져온다는 의미 
+- off loading 방식이란? offset을 지정하고 참조 하는 파일 안에 필요한 정보가 있는 지 offset으로 지정한 라인까지 읽고 없으면 다음 블록으로 넘어가는 방식 
+ 
+4-3) sub-agent : 멀티 에이전트 패턴 지향 (for context isolation / delegation) 
+- context isolation : 왜 필요한가? long running 하는 에이전트를 만들기 위해서는 main agent에게 context가 일목요연하게 필요한 정보만 있는 게 좋음 
+- context delegation : sub agent에게 위임시켜서 main agent에게 compact한 정보만 넘길 수 있도록 하기 위함 
+
+4-4) 장기 메모리 
+
+
+### 주요 deep agent 사례 코드 확인 가능 
+https://github.com/teddynote-lab/deep-agents-from-scratch
+
+
+* agent 아키텍처에 대해서 의견을 서로 나누는 게 중요하다고 생각 
+agent를 벤치마킹할 수 있는 리더보드
+agent를 오픈소스로 올리는 환경 기반이 되어야 하는 
+
+* langchain - langsmith 아카데미 잘 정리 되어 있다고 함 
+
+* 추상화가 많이 되어서 langchain, langgraph가 정답은 아니지만, 스타트를 하기에 굉장히 좋은 프레임워크라고 생각함 
+
+
