@@ -73,7 +73,7 @@ LangChain(기본 기능함수 등) / LangGraph(흐름 구성) / LangSmith (모�
 - 배경지식을 알아 볼 필요가 있음 : 작년 n8n, dify, Open AI Agent Builder 등 노코드 툴이 트렌드였음.
 - 그러나, 해당 툴들은 workflow tool이다. 사실 비개발자들이 그 툴을 사용하기에 진입장벽이 있다
 - 그래서, 자연어로 에이전트를 구축할 수 있도록 만든 것이 LangSmith Agent Builder이다. 
-- 코드로 구현하는 걸 100% 라고 하면, 노코드 툴로 75~85%정도 , Agent Builder는 70~80%정도 커버가 가능한 수준이라고 볼 수 있다고 생각.
+- 코드로 구현하는 걸 100% 라고 하면, 노코드 툴로 75-85%정도 , Agent Builder는 70-80%정도 커버가 가능한 수준이라고 볼 수 있다고 생각.
 (작업할 상황과 설계에 따라 굳이 모든 걸 LangGraph로 구현할 필요가 없음) 
 - 바이브 LangGraph 느낌 (구글 Opal 비슷) 
 
