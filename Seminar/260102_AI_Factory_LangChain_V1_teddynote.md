@@ -121,18 +121,18 @@ LangChain(기본 기능함수 등) / LangGraph(흐름 구성) / LangSmith (모�
 - 장기 맥락을 유지하면서 복잡한 시스템이 가능할 지에 대해서 고민했던 게 멀티 에이전트 시스템이 나온 것 
 - 그러나, 실질적인 좋은 결과로 이어지지는 않음 (적용되지 않은 부분 : ) 
 - 그래서, 단순히 에이전트 10개 있다고 해서 성능이 곱하기 10배가 되는 게 아니라는 것!! 
-4-1) TO-do 플래닝(사전계획 플래닝)
-- 
-4-2) file-system 으로 관리 (공간 안의 메모리 잡아 먹는 걸 줄이고, 토큰비용 줄어들고, 효율적으로 관리 가능)
-- context off loading system : 참조 context 파일을 읽어올 때 off loading 방식 
-- main agent 에게 주어지는 맥락을 파일 형태로 관리하고, 파일 목록을 조회해서 관련성 있는 파일을 off loading 하는 방식으로 가져온다는 의미 
-- off loading 방식이란? offset을 지정하고 참조 하는 파일 안에 필요한 정보가 있는 지 offset으로 지정한 라인까지 읽고 없으면 다음 블록으로 넘어가는 방식 
- 
-4-3) sub-agent : 멀티 에이전트 패턴 지향 (for context isolation / delegation) 
-- context isolation : 왜 필요한가? long running 하는 에이전트를 만들기 위해서는 main agent에게 context가 일목요연하게 필요한 정보만 있는 게 좋음 
-- context delegation : sub agent에게 위임시켜서 main agent에게 compact한 정보만 넘길 수 있도록 하기 위함 
 
-4-4) 장기 메모리 
+- 4-1) TO-do 플래닝(사전계획 플래닝)
+- 4-2) file-system 으로 관리 (공간 안의 메모리 잡아 먹는 걸 줄이고, 토큰비용 줄어들고, 효율적으로 관리 가능)
+	 - context off loading system : 참조 context 파일을 읽어올 때 off loading 방식 
+	 - main agent 에게 주어지는 맥락을 파일 형태로 관리하고, 파일 목록을 조회해서 관련성 있는 파일을 off loading 하는 방식으로 가져온다는 의미 
+	 - off loading 방식이란? offset을 지정하고 참조 하는 파일 안에 필요한 정보가 있는 지 offset으로 지정한 라인까지 읽고 없으면 다음 블록으로 넘어가는 방식 
+ 
+- 4-3) sub-agent : 멀티 에이전트 패턴 지향 (for context isolation / delegation) 
+	 - context isolation : 왜 필요한가? long running 하는 에이전트를 만들기 위해서는 main agent에게 context가 일목요연하게 필요한 정보만 있는 게 좋음 
+	 - context delegation : sub agent에게 위임시켜서 main agent에게 compact한 정보만 넘길 수 있도록 하기 위함 
+
+- 4-4) 장기 메모리 
 
 
 ### 주요 deep agent 사례 코드 확인 가능 
