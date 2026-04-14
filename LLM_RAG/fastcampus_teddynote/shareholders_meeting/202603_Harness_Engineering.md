@@ -18,6 +18,7 @@
 ---
 **추가 팁) ADR(Architecture Decision Records) 변경사항들을 적는 파일을 거기에 넣고, 새롭게 Skill을 만들어서 ADR폴더를 읽고 claude.md/rules.md/memory.md 싱크를 맞추도록 하기
 --> 이러한 부분들이 하네스 엔지니어링이다 
+
 ---
 
 * custom agent - front meta 정보 항시 로드가 됨  
@@ -39,8 +40,9 @@ sub-agent 는 컨텍스트 따로 관리할 수 있는데 해당 sub agent가 me
 ---
 ** 컨텍스트 꽉채워서 1million 사용하면 안됨 !!! 
 (why? 26만 토큰정도 컨텍스트 정확도 93% 가 100만 토큰의 컨텍스트가 꽉  채워지면 정확도가  76%로 떨어짐) 
----
 
+
+---
 ### LL(Lesson Learned) - agent builder 300만줄을 클로드코드와 코딩하면서 배우고 얻게된 것들 
 - oh-my-opencode
 - oh-my-claudecode 
