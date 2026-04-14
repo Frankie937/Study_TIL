@@ -65,3 +65,14 @@ sub-agent 는 컨텍스트 따로 관리할 수 있는데 해당 sub agent가 me
 -> 테디님은 처음에 plan을 촘촘하게 짜지 않는다고 함. 이후 리뷰에서 인프라/ 백엔드/ 프론트엔드 등 관점에서 구체화시킨다고 함. 그래서 구체화된 결과물을 llm에게 넣어주면 결과과 훨씬 더 좋다고 하심 (plan을 오히려 초안처럼 느슨하게 짠다고 하심)
 
 ---
+
+
+
+
+### 참고 
+* Harness engineering 참고 github 
+    - https://github.com/modu-ai/moai-adk
+    - https://github.com/Yeachan-Heo/oh-my-claudecode
+    - https://ohmyopenagent.com/ko
+* 학습용 추천 도큐먼드 
+    - https://ohmyopenagent.com/ko/docs
