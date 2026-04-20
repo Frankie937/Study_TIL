@@ -83,7 +83,20 @@ sub-agent 는 컨텍스트 따로 관리할 수 있는데 해당 sub agent가 me
 * Skill로 만들어야 하는 것?
     - Claude Code 자체로는 할 수 없는 새로운 기능
     - ex) 카카오톡 메세지 발송/ Gmail 읽어서 요약하는 기능/ HWP문서를 다루는 기능 등
+* Agent로 만들어야 하는 것?
+    - 독립적인 역할을 가지고 수행하는 일
+    - 독립적인 Sub-Agent는 각각의 skill과 도구를 활용할 수 있음(기능 분리) 
+* Command
+    - 내가 쓸 수 있는 agent들과 skill들을 어떤 순서대로 쓸 것인지 정의해서 묶음으로 묶어준 것 (세부 workflow 느낌이 듦)
+    - 한 번만 쓰려면 프롬프트에 그냥 명시하고 말겠으나, 여러 번 그런 순서대로 쓰겠다고 하면 command로 정의해서 만들어주는 게 좋음
+    - sub-agent는 다른 sub-agent를 spwan할 수 없기 때문에 command로 오케스트레이션 해줘야 함 (claude code가 재귀호출 방지로 못하게 막아놓음)
+    - context window 오염 방지
+    - sub-agent는 plan모드가 없음
+ 
+* Hooks
 
+  
+* 
 
 ### 참고 
 * Harness engineering 참고 github 
