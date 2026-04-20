@@ -76,6 +76,14 @@ sub-agent 는 컨텍스트 따로 관리할 수 있는데 해당 sub agent가 me
     - 일반 자연어로 지시하는 것보다 개발/아키텍처 지식을 주입하는 관점이 훨씬 좋음 (software/framework를 공부한 사람이 유리할 수 밖에 없음) 
 
 
+* Sub-Agent로 분리하면 좋은 점 2가지
+    - Main Agent의 Context Window 분리 및 절약
+    - 병렬처리 가능(단, 의존성 없는 작업의 경우! 의존성이 있으면 순차적으로 처리해야 함)  
+
+* Skill로 만들어야 하는 것?
+    - Claude Code 자체로는 할 수 없는 새로운 기능
+    - ex) 카카오톡 메세지 발송/ Gmail 읽어서 요약하는 기능/ HWP문서를 다루는 기능 등
+
 
 ### 참고 
 * Harness engineering 참고 github 
