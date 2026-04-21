@@ -104,6 +104,20 @@ sub-agent 는 컨텍스트 따로 관리할 수 있는데 해당 sub agent가 me
 * Git Worktree 필수 (동시에 여러 작업하기 위해서는!!!)
     - 겹치는 작업이 없을 경우에는 worktree 필요가 없겠으나 겹치는 작업이 있으면 필수이다. 
 
+* ast-grep 필수
+    - https://github.com/ast-grep/ast-grep
+    - 패턴기반으로 문자열 바꾸는 게 가능   
+    <img width="1173" height="636" alt="image" src="https://github.com/user-attachments/assets/8607cbd5-e1da-48d5-b979-012f10b06f53" />
+
+* 스킬 기반의 아키텍처로 진화
+    - 이전에 강건한 아키텍처에서 스킬 기반의 아키텍처로 진화할 것 같
+    - AS-IS
+    - <img width="1286" height="664" alt="image" src="https://github.com/user-attachments/assets/64cfb740-9e31-4d5e-8f65-4a9762cea747" />
+    - TO-BE
+    - <img width="1182" height="684" alt="image" src="https://github.com/user-attachments/assets/74f85b35-f6c5-4e0a-b40c-fc59fddccf03" />
+    - 스킬 기반의 아키텍처 장점 : 실질적으로 구동할 수 있는 역량이 늘어날 수 있음 (메모리만 업데이트하는 게 아니라 여러 skill들을 업데이트 하기에)
+    - self-evolving 시스템
+
 ### 참고 
 * Harness engineering 참고 github 
     - https://github.com/modu-ai/moai-adk
