@@ -94,9 +94,15 @@ sub-agent 는 컨텍스트 따로 관리할 수 있는데 해당 sub agent가 me
     - sub-agent는 plan모드가 없음
  
 * Hooks
+<img width="1309" height="562" alt="image" src="https://github.com/user-attachments/assets/fa662116-a4ec-4525-9e82-a9b1f7af18e6" />
 
-  
-* 
+* Claude Code + 하네스엔지니어링 -> 문제가 안풀린다면 CODEX(다른 AI)를 사용하는 방법도 추천 (우리의 Harness Engineering이 완벽하지 않기 때문) 
+
+* 시작은 Skill Creator 부터 시작한다. (/Plugins -> skill-creator 검색 -> 설치)
+    - https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md
+      
+* Git Worktree 필수 (동시에 여러 작업하기 위해서는!!!)
+    - 겹치는 작업이 없을 경우에는 worktree 필요가 없겠으나 겹치는 작업이 있으면 필수이다. 
 
 ### 참고 
 * Harness engineering 참고 github 
