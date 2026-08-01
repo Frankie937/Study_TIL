@@ -3,3 +3,44 @@
 - SoT 개발 문서 작성 및 SoT 기반 개발 방법
 - 나만의 하네스 구성 요소 소개. 툴 추천 등
 - 비개발자가 서비스 개발시 유의사항
+
+
+---
+
+### 에이전틱 코딩셋업 
+
+옛날에는 코딩이 병목이었으나, 요즘은 이슈관리가 병목이라 느낌 
+- 에이전틱코딩 : ADE(Orca - https://www.onorca.dev)/ Codex / Claude Code 
+- 이슈관리 : Linear
+- 프로젝트관리 : Git / Gitlab 
+- 자동화 : Hermes / Orca Mobile로 대체가능 
+- 메세지 : Slack (이슈를 slack으로 연동해서 받게끔) 
+- GUI : Pen MCP (강력하게 추천, 무료로 사용가능, ppt 나 웹 ui 디자인 이걸로 뽑고 있음, claude code 연동 가능) 
+
+### Orca 편의기능 
+https://www.onorca.dev/
+- Orca Mobile 앱으로 원격으로 조정 가능 (컴퓨터 켜놓고, 원격 작업 가능)
+- 코덱스, 클로드앱이랑 차이점 있게 좋은 점? 모든 구독 모델들을 연동해서 사용할 수 있음, 우측 파일 탐색기(IDE처럼), automation 추적, in-brower로 마크업 설정, Orca Ochestration(이 기능이 kick point!!!)
+- orca ochestration 설치 명령어: orca skills get orchestration
+- SoT문서를 OKF방식으로 정리해줌 (OKF는 frontmatter가 깔끔하게 정리되서 좋음)
+
+### 사용
+- 1) SoT(Source Of Truth) 문서 작성 (어떤 프로젝트인지 설명/ 어떤 기술 스택으로 개발할 것 인지 설명/ DB스키마(컬럼, 타입 등 정의 - 많은 공을 들이는 게 좋고, 검토할 수 있다면 더 좋음)/대략적인 아키텍처 구성요소 를 기본적으로 담아내고 + rules + 기타 등등을 추가해나가면서 SoT문서들을 고도화)  
+- 2) 개발하고 이슈관리는 Linear로 관리 
+
+### 예시 prompt 
+
+- 처음 prompt 팁 : 
+한국어로 대답해줘. 그리고 편한 어투로 대답해줘.                                                                                                                                                                           
+  나를 비개발자라고 생각해줘.
+  그래서 항상 나에게 쉽고 친절하게 설명해주고. 그냥 반말로 설명해줘.
+  그리고 다이어그램 같은거는 ascii diagram 로 쉽게 시각화해서 설명해줘.
+
+  프로젝트 메모리로 저장해줘
+
+- whisper note (voice) https://whispernotes.app/ko (6.99달러로 평생사용 가능)
+- 프로젝트할 때마다 나에게 최소 10개 이상 질문하라고 함 (user interview skill로 만들어도 좋음 - askUserQuestions 도구를 쓰게 만들면 됨)
+- SoT 문서는 여러 개로 쪼개기 
+- 화면설계 prompt 팁: 화면설계 들어갈 때 mermaid로 설계 진행해줘. 화면설계는 내가 Pen MCP사용하면서 직접 수정할건데, 근데 화면 기능정의서는 작성해줘. Pen APP에서 참조할 수 있도록 정의해줘 
+- 다른 llm 모델에게 SoT문서를 리뷰받도록 하는 것도 좋음(skill로 만들어놔도 좋음 -예시: 클로드코드에게 시키고 있는데 코덱스에게 리뷰를 시키는) 
+
