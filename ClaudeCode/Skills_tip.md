@@ -22,7 +22,9 @@
   * /plugin install understand-anything
 
 ### 5) agentmemory (6:15): 세션이 바뀌어도 프로젝트 맥락을 기억하게 해주는 메모리 스킬입니다. 벡터 및 그래프 검색을 통해 필요한 정보만 효율적으로 불러옵니다.
-
-
+* agentmemory
+  * npx @agentmemory/agentmemory
+  * agentmemeory
+    
 ### 6) Skill Creator (7:26): 사용자의 작업 방식에 최적화된 맞춤형 스킬을 직접 생성해 줍니다. 반복적인 프롬프트를 스킬화하여 재사용하면 작업 속도가 훨씬 빨라집니다.
 
