@@ -248,8 +248,6 @@ spec:
 * 쿠버네티스 `deployment.yaml`에 `readinessProbe`를 설정하여 모델 로딩이 완전히 끝난 후(`200 OK`)에만 트래픽이 유입되도록 제어.
 * 새로운 모델 버전 배포 시 롤링 업데이트(Rolling Update) 동안 기존 버전 컨테이너가 요청을 처리하고, 새 컨테이너의 모델 로딩이 완료된 시점에 무중단 교체되도록 구현.
 
-
-
 ---
 
 ### 2. OOM(Out of Memory) 및 GPU 메모리 폭주 방지 (`resources` 설정)
@@ -260,8 +258,6 @@ spec:
 * 메모리 폭주 시 해당 컨테이너 하나만 안전하게 강제 종료(`OOMKilled`)되고, 쿠버네티스가 즉시 재시작(`livenessProbe` & Restart Policy)시키도록 자가 치유(Self-Healing) 환경 구축.
 * 물리 서버(Node) 자체의 다운을 막고 다른 서비스 Pod로 장애가 전이되지 않도록 리소스 격리 수행.
 
-
-
 ---
 
 ### 3. GPU 리소스 효율화 및 공유 설정 (GPU Sharing / Node Selector)
@@ -271,8 +267,6 @@ spec:
 * NVIDIA GPU Operator 및 **MIG(Multi-Instance GPU)** 또는 **GPU Time-Slicing** 기술을 활용해 GPU 1장을 여러 Pod가 나누어 쓰도록 쿠버네티스 구성.
 * `nodeSelector`나 `tolerations/taints`를 설정하여, CPU만 필요한 일반 API 서버는 일반 노드에, LLM 추론 전용 Pod는 expensive한 GPU 노드(A100, H100 등)에만 정확히 스케줄링되도록 제어.
 
-
-
 ---
 
 ### 4. 트래픽 폭주 대응 및 GPU 기반 Auto-scaling (HPA / KEDA)
@@ -281,8 +275,6 @@ spec:
 * **해결 및 운영 경험:**
 * KEDA(Kubernetes Event-driven Autoscaling)나 Prometheus Metrics Adapter를 구축.
 * GPU 유틸리티(GPU Duty Cycle)나 vLLM의 요청 대기 큐(Request Queue Length)를 지표로 삼아, 대기 요청이 많아지면 동일한 AI 추론 컨테이너를 자동으로 수평 확장(Scale-out)하도록 HPA 구성.
-
-
 
 ---
 
