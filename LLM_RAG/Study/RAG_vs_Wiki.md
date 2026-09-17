@@ -1,6 +1,7 @@
 
 
 # RAG vs LLM wiki 
+(샘호트만 유튜버 영상: https://youtu.be/GrEFRTmbMfI?si=p5SFn3C3kSkzIm_x) 
 
 * 비유 
 - RAG: 대학교 오픈북 시험 
